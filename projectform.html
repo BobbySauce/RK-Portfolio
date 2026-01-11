@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Portfolio</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+		<style>
+			:root { --max-width: 1000px; } 
+:root {
+  --bgwhite: #f0f0f0;
+  --black: #1a1a1a;
+  --primary: #3b82f6;
+  --accent: rgb(34, 197, 94);
+}
+
+			html,body { height:100%; margin:0; overflow-x:hidden; }
+			body { font-family: 'Inter', Arial, sans-serif; background:var(--bgwhite); color:var(--black); }
+			
+			.container { max-width:var(--max-width); margin:0 auto; background:var(--bgwhite); border: 2px solid var(--black); overflow: visible; }
+			
+			.bordercontainer { max-width:var(--max-width); margin:0 auto; padding: 1.25rem; }
+
+			header.site-header { text-align:left; margin-top:2rem; position: relative; }
+			header.site-header h1 { margin:0; font-size:2.5rem; font-weight:700; letter-spacing: -0.02em; }
+			header.site-header h2 { margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;}
+			header.site-header h3 { text-align:center; margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;}
+
+			.center-line {
+ 			width: 20%;       /* or any width you want */
+ 			margin: 100px auto; /* centers it horizontally and adds vertical space */
+ 			border: 1px solid var(--black); /* line color and thickness */ 
+			 }
+
+
+
+            .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(1, 1fr);
+            gap: 10px;}
+    
+
+            .div2 {
+         	grid-column: span 2 / span 2;}
+        
+
+            .card {
+			border: 2px solid var(--black);
+			background-color: var(--black);
+			
+			
+            }
+			      .card img:hover {
+            opacity: 1;
+        }
+
+            .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+			opacity:0.3;
+			transition: opacity 0.3s;}
+
+
+	        .info-bar {
+            background-color: var(--black);
+            color: var(--bgwhite);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px; }
+
+			 .info-bar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: opacity 0.3s;
+        }
+
+        .info-bar a:hover {
+            opacity: 0.1;
+        }
+
+		/* Header grid: left = text, right = empty container where model will be centered */
+		.header-grid {
+			display: grid;
+			grid-template-columns: 1fr minmax(280px, 420px);
+			align-items: center;
+			gap: 24px;
+		}
+
+		.header-text {
+			z-index: 5;
+		}
+
+		.header-empty {
+			position: relative;
+			width: 100%;
+			min-height: 220px; /* gives the empty cell height so model can center */
+			overflow: visible;
+		}
+
+		/* Flexible floating model that can be scaled via CSS variables
+		   --model-width: desired width (e.g. 1200px, 90vw)
+		   --model-height: desired height (e.g. 80vh, 600px)
+		*/
+		.floating-model {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 2000px;
+			height: 500px;
+			max-width: none;
+			z-index: 9999; /* on top of everything */
+			pointer-events: none; /* allow clicks to pass through */
+		}
+
+		.floating-model model-viewer {
+			width: 100%;
+			height: 100%;
+		}
+
+		</style>
+		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+				    <div class="info-bar">
+         <span><a href="/main copy.html"><- back</a></span>
+        <nav>
+            <a href="/sketches">sketches</a>
+			<a >|</a>
+			<a href="/about">about</a>
+        </nav>
+    </div>
+				<div class="bordercontainer">
+				<header class="site-header">
+					<div class="header-grid">
+						<div class="header-text">
+							<h1>PROJECT NAME</h1>
+							<h2>TITLE</h2>
+						</div>
+						<div class="header-empty">
+							<div class="floating-model">
+								<model-viewer src="/assets/model.glb" alt="3D model" auto-rotate camera-orbit="45deg 75deg 6m" ></model-viewer>
+							</div>
+						</div>
+					</div>
+					<hr class="center-line">
+		 
+
+
+
+
+
+
+
+
+
+					
+			</header>
+			<main>
+
+			</main>
+		</div>
+		 <div class="info-bar">	</div>
+		
+	</body>
+</html>
+
