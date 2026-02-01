@@ -127,9 +127,18 @@
 			/* Center the sketch image and keep it responsive */
 			.sketch {
 				display: block;
-				margin: 2rem auto 0;
+				margin-left: -1.25rem !important;
+				margin-right: -1.25rem !important;
 				max-width: 100%;
 				height: auto;
+				border:10;
+			}
+
+			/* Full-width model viewer within padded container */
+			model-viewer {
+				margin-left: -1.25rem !important;
+				margin-right: -1.25rem !important;
+				width: calc(100% + 2.5rem) !important;
 			}
 
 		</style>
@@ -157,14 +166,36 @@
 
 						<div class="header-empty">
 							<div class="floating-model">
-								<model-viewer src="/assets/model.glb" alt="3D model" auto-rotate camera-orbit="45deg 75deg 6m"></model-viewer>
+								<model-viewer src="/RK-Portfolio/assets/model.glb" alt="3D model" auto-rotate camera-orbit="45deg 75deg 6m"></model-viewer>
 							</div>
 						</div>
 
 					</div>
 					<hr class="center-line">
+					<p>-Student Project-</p>
+					<p>Before the Honda NSX the idea of a Japanese super car already
+					existed. The Nissan MID4 was one of those unrealized visions. Clearly
+					<strong>inspired by European mid-engined sports cars</strong>, the MIDs
+					and especially the MID-II has that dynamic and
+					<strong>organically futurist</strong> look, that really set it apart
+					from other Japanese cars. Sadly the car never made it to production. In
+					this project, I have <strong>reconceptualized</strong> the MID for the
+					modern day.</p>
+					<p>The MID4-II has a truly great side profile.
+					Beltline, shoulder line and the vent line up, creating a dynamic
+					ribbon-like shape that works well inside the A-line. This together with the soft flowing volumes and its subtle dome hood are <strong>
+					essential </strong>  to the MID's identity. </p>
 					<img src="/RK-Portfolio/mid/midsketches.png" class="sketch">
-
+					
+					<model-viewer
+  					src="/RK-Portfolio/mid/midgs.glb"
+					ar 
+					ar-modes="webxr scene-viewer quick-look"
+  					alt="3D model"
+ 					 auto-rotate
+  					camera-controls
+   					 style="width: 100%; height: 600px; display: block; margin: 0 auto;">
+					</model-viewer>
 
 				</header>
 				<main>
