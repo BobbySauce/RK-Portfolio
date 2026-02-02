@@ -35,34 +35,7 @@
 
 
 
-            .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(1, 1fr);
-            gap: 10px;}
-    
-
-            .div2 {
-         	grid-column: span 2 / span 2;}
-        
-
-            .card {
-			border: 2px solid var(--black);
-			background-color: var(--black);
-			
-			
-            }
-			      .card img:hover {
-            opacity: 1;
-        }
-
-            .card img {
-            width: 100%;
-            height: auto;
-            display: block;
-			opacity:0.3;
-			transition: opacity 0.3s;}
-
+ 
 
 	        .info-bar {
             background-color: var(--black);
@@ -92,44 +65,13 @@
 			gap: 24px;
 		}
 
-		.header-text {
-			z-index: 5;
-		}
-
-		.header-empty {
-			position: relative;
-			width: 100%;
-			min-height: 220px; /* gives the empty cell height so model can center */
-			overflow: visible;
-		}
-
-		/* Flexible floating model that can be scaled via CSS variables
-		   --model-width: desired width (e.g. 1200px, 90vw)
-		   --model-height: desired height (e.g. 80vh, 600px)
-		*/
-		.floating-model {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			width: 2000px;
-			height: 500px;
-			max-width: none;
-			z-index: 9999; /* on top of everything */
-			pointer-events: none; /* allow clicks to pass through */
-		}
-
-		.floating-model model-viewer {
-			width: 100%;
-			height: 100%;
-		}
 
 			/* Center the sketch image and keep it responsive */
 			.sketch {
 				display: block;
 				margin-left: -1.25rem !important;
 				margin-right: -1.25rem !important;
-				max-width: 100%;
+				width: calc(100% + 2.5rem) !important;
 				height: auto;
 				border:10;
 			}
@@ -140,8 +82,165 @@
 				margin-right: -1.25rem !important;
 				width: calc(100% + 2.5rem) !important;
 			}
+        /* Image gallery grid and modal preview */
+       
+		 .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        
+           
+       
+       
+        }
 
+        .gallery-item {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #f0f0f0;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            color: #333;
+        }
+
+        .lightbox-close:hover {
+            background: #f0f0f0;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            color: #333;
+        }
+
+        .lightbox-nav:hover {
+            background: white;
+        }
+
+        .lightbox-prev {
+            left: -70px;
+        }
+
+        .lightbox-next {
+            right: -70px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+            }
+        }
 		</style>
+
 		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 	</head>
 
@@ -161,7 +260,7 @@
 					<div class="header-grid">
 						<div class="header-text">
 							<h1>MID 4 TYPE H</h1>
-							<h2>NISSAN MID 4 (RE)IMAGINED</h2>
+							<h2>NISSAN MID4 (RE)IMAGINED</h2>
 						</div>
 
 						<div class="header-empty">
@@ -187,6 +286,14 @@
 					the soft flowing volumes and its subtle dome hood are <strong>
 					essential </strong>  to the MID's identity. </p>
 					<img src="/RK-Portfolio/mid/midsketches.png" class="sketch">
+
+
+					<p> <strong> Gravity Sketch </strong>is a great way to bring my sketches into 3D space, 
+					while working with the real scale and proportions in VR. Because
+					working with SUB-D is quite fast, I am still able to iterate and explore. 
+					In this case, especially the back end has gone through some changes.
+					The model was then directly brought to Alias for more refined surfacing.</p>
+					
 					
 					<model-viewer
   					src="/RK-Portfolio/mid/midgs.glb"
@@ -198,6 +305,20 @@
 					
 					</model-viewer>
 
+					<div class="gallery-grid" id="gallery">
+          		 	 <!-- Gallery items will be injected here by JavaScript -->
+       			 	</div>
+
+				<!-- Lightbox modal -->
+				<div class="lightbox" id="lightbox">
+					<div class="lightbox-content">
+						<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+						<img id="lightbox-img" src="" alt="Preview">
+						<button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">❮</button>
+						<button class="lightbox-nav lightbox-next" onclick="changeImage(1)">❯</button>
+					</div>
+				</div>
+
 				</header>
 				<main>
 				
@@ -206,6 +327,77 @@
 			
 			<div class="info-bar"></div>
 		</div>
+
+		<script>
+			// Sample images - Replace these URLs with your actual image URLs
+			const images = [
+				'/RK-Portfolio/mid/midalias.png',
+				'/RK-Portfolio/mid/midvar.jpg',
+				'/RK-Portfolio/mid/midvar (1).jpg',
+				'/RK-Portfolio/mid/midvar (2).jpg',
+				'/RK-Portfolio/mid/midgscomp.png',
+			];
+
+			let currentImageIndex = 0;
+			const gallery = document.getElementById('gallery');
+			const lightbox = document.getElementById('lightbox');
+			const lightboxImg = document.getElementById('lightbox-img');
+
+			// Create gallery items
+			images.forEach((src, index) => {
+				const item = document.createElement('div');
+				item.className = 'gallery-item';
+				item.onclick = () => openLightbox(index);
+				
+				const img = document.createElement('img');
+				img.src = src;
+				img.alt = `Gallery image ${index + 1}`;
+				img.loading = 'lazy';
+				
+				item.appendChild(img);
+				gallery.appendChild(item);
+			});
+
+			function openLightbox(index) {
+				currentImageIndex = index;
+				lightboxImg.src = images[index];
+				lightbox.classList.add('active');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeLightbox() {
+				lightbox.classList.remove('active');
+				document.body.style.overflow = 'auto';
+			}
+
+			function changeImage(direction) {
+				currentImageIndex += direction;
+				
+				if (currentImageIndex < 0) {
+					currentImageIndex = images.length - 1;
+				} else if (currentImageIndex >= images.length) {
+					currentImageIndex = 0;
+				}
+				
+				lightboxImg.src = images[currentImageIndex];
+			}
+
+			// Close lightbox on background click
+			lightbox.addEventListener('click', (e) => {
+				if (e.target === lightbox) {
+					closeLightbox();
+				}
+			});
+
+			// Keyboard navigation
+			document.addEventListener('keydown', (e) => {
+				if (!lightbox.classList.contains('active')) return;
+				
+				if (e.key === 'Escape') closeLightbox();
+				if (e.key === 'ArrowLeft') changeImage(-1);
+				if (e.key === 'ArrowRight') changeImage(1);
+			});
+		</script>
 	</body>
 </html>
 
