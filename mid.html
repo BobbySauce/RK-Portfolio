@@ -46,7 +46,7 @@
             align-items: center;
             font-size: 14px; }
 
-			 .info-bar a {
+		.info-bar a {
             color: white;
             text-decoration: none;
             margin-left: 20px;
@@ -82,17 +82,15 @@
 				margin-right: -1.25rem !important;
 				width: calc(100% + 2.5rem) !important;
 			}
-        /* Image gallery grid and modal preview */
+        
+		
+			/* Image gallery grid and modal preview */
        
-		 .gallery-grid {
+		 
+		.gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            padding: 20px;
-        
-           
-       
-       
         }
 
         .gallery-item {
@@ -274,7 +272,7 @@
 					</div>
 					<hr class="center-line">
 					<img src="/RK-Portfolio/mid/image.png" class="sketch" style="display:block">
-					<p>-Student Project-</p>
+					<p>- Student Project -</p>
 
 					<p>Before the Honda NSX the idea of a Japanese super car already
 					existed. The Nissan MID4 was one of those unrealized visions. Clearly
@@ -291,12 +289,8 @@
 					essential </strong>  to the MID's identity. </p>
 					<img src="/RK-Portfolio/mid/midsketches.png" class="sketch">
 
-					<p> <strong> Gravity Sketch </strong>is a great way to bring my sketches into 3D space, 
-					while working with the real scale and proportions in VR. Because
-					working with SUB-D is quite fast, I am still able to iterate and explore. 
-					In this case, especially the back end has gone through some changes.
-					The model was then directly brought to Alias for more refined surfacing.</p>
-					
+
+					<p>- 3D-SKETCH IN VR -</p>
 					
 					<model-viewer
   					src="/RK-Portfolio/mid/midgs.glb"
@@ -307,6 +301,13 @@
    					 style="width: 100%; height: 300px; display: block; margin: 0 auto;">
 					
 					</model-viewer>
+
+					<p> <strong> Gravity Sketch </strong> is a great way to bring my sketches into 3D space, 
+					while working with the real scale and proportions in VR. Because
+					working with SUB-D is quite fast, I am still able to iterate and explore. 
+					In this case, especially the back end has gone through some changes.
+					The model was then directly brought to Alias as a reference for more refined surfacing.</p>
+					
 
 					<div class="gallery-grid" id="gallery">
           		 	 <!-- Gallery items will be injected here by JavaScript -->
@@ -334,7 +335,9 @@
 		<script>
 			// Sample images - Replace these URLs with your actual image URLs
 			const images = [
+				'/RK-Portfolio/mid/midalias (1).png',
 				'/RK-Portfolio/mid/midalias.png',
+				
 				'/RK-Portfolio/mid/midvar.jpg',
 				'/RK-Portfolio/mid/midvar (1).jpg',
 				'/RK-Portfolio/mid/midvar (2).jpg',
