@@ -19,17 +19,19 @@
 			
 			.container { max-width:var(--max-width); margin:0 auto; background:var(--bgwhite); border: 2px solid var(--black); overflow: visible; }
 			
-			.bordercontainer { max-width:var(--max-width); margin:0 auto; padding: 1.25rem; }
+			.bordercontainer { max-width:var(--max-width); margin:0 auto; margin-bottom: 2rem;  margin-left: 1.25rem; margin-right: 1.25rem; }
 		
 
-			header.site-header { text-align:left; margin-top:2rem; position: relative; }
-			header.site-header h1 { margin:0; font-size:2.5rem; font-weight:700; letter-spacing: -0.02em; }
-			header.site-header h2 { margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;}
-			header.site-header h3 { text-align:center; margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;}
+			header.site-header { text-align:left;  position: relative; }
+			header.site-header h1 { margin:0; font-size:2.5rem; font-weight:700; letter-spacing: -0.02em;margin-left: +1.25rem !important;
+			margin-right: +1.25rem }
+			header.site-header h2 { margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;margin-left: +1.25rem !important;
+			margin-right: +1.25rem}
+			
 
 			.center-line {
  			width: 20%;       /* or any width you want */
- 			margin: 100px auto; /* centers it horizontally and adds vertical space */
+ 			margin: 35px auto; /* centers it horizontally and adds vertical space */
  			border: 1px solid var(--black); /* line color and thickness */ 
 			 }
 
@@ -57,23 +59,29 @@
             opacity: 0.1;
         }
 
-		/* Header grid: left = text, right = empty container where model will be centered */
-		.header-grid {
-			display: grid;
-			grid-template-columns: 1fr minmax(280px, 420px);
+		/* Header thumbnail */
+		.header-thumb{
+			background-image: url('/RK-Portfolio/mid/midthumb.png');
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
 			align-items: center;
 			gap: 24px;
+			min-height: 294px;
+			display: flex;	
+			margin-left: -1.25rem !important;
+			margin-right: -1.25rem !important;
+			
 		}
 
 
 			/* Center the sketch image and keep it responsive */
-			.sketch {
+			.fullscreen-img {
 				display: block;
 				margin-left: -1.25rem !important;
 				margin-right: -1.25rem !important;
 				width: calc(100% + 2.5rem) !important;
 				height: auto;
-				border:10;
 			}
 
 			/* Full-width model viewer within padded container */
@@ -255,23 +263,18 @@
 
 			<div class="bordercontainer">
 				<header class="site-header">
-					<div class="header-grid">
+					<div class="header-thumb">
 						<div class="header-text">
 							<h1>MID 4 TYPE H</h1>
 							<h2>NISSAN MID4 (RE)IMAGINED</h2>
 						</div>
 
-						<div class="header-empty">
-							<div class="floating-model">
-								<model-viewer src="/RK-Portfolio/assets/model.glb" alt="3D model" auto-rotate camera-orbit="45deg 75deg 6m"></model-viewer>
-								
-							</div>
-						</div>
+
 						
 
 					</div>
 					<hr class="center-line">
-					<img src="/RK-Portfolio/mid/image.png" class="sketch" style="display:block">
+				
 					<p>- Student Project -</p>
 
 					<p>Before the Honda NSX the idea of a Japanese super car already
@@ -287,7 +290,7 @@
 					ribbon-like shape that works well inside the A-line. This together with 
 					the soft flowing volumes and its subtle dome hood are <strong>
 					essential </strong>  to the MID's identity. </p>
-					<img src="/RK-Portfolio/mid/midsketches.png" class="sketch">
+					<img src="/RK-Portfolio/mid/midsketches.png" class="fullscreen-img">
 
 
 					<p>- 3D-SKETCH IN VR -</p>
