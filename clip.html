@@ -6,7 +6,7 @@
 		<title>Portfolio</title>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 		<style>
-			:root { --max-width: 1000px; } 
+			:root { --max-width: 1500px; } 
 :root {
   --bgwhite: #f0f0f0;
   --black: #1a1a1a;
@@ -19,50 +19,25 @@
 			
 			.container { max-width:var(--max-width); margin:0 auto; background:var(--bgwhite); border: 2px solid var(--black); overflow: visible; }
 			
-			.bordercontainer { max-width:var(--max-width); margin:0 auto; padding: 1.25rem; }
+			.bordercontainer { max-width:var(--max-width); margin:0 auto; margin-bottom: 2rem;  margin-left: 1.25rem; margin-right: 1.25rem; }
+		
 
-			header.site-header { text-align:left; margin-top:2rem; position: relative; }
-			header.site-header h1 { margin:0; font-size:2.5rem; font-weight:700; letter-spacing: -0.02em; }
-			header.site-header h2 { margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;}
-			header.site-header h3 { text-align:center; margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;}
-
+			header.site-header { text-align:left;  position: relative; }
+			header.site-header h1 { margin:0; font-size:2.5rem; font-weight:700; letter-spacing: -0.02em;margin-left: +1.25rem !important;
+			margin-right: +1.25rem }
+			header.site-header h2 { margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;margin-left: +1.25rem !important;
+			margin-right: +1.25rem}
+			
 
 			.center-line {
  			width: 20%;       /* or any width you want */
- 			margin: 100px auto; /* centers it horizontally and adds vertical space */
+ 			margin: 35px auto; /* centers it horizontally and adds vertical space */
  			border: 1px solid var(--black); /* line color and thickness */ 
 			 }
 
 
 
-            .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(1, 1fr);
-            gap: 10px;}
-    
-
-            .div2 {
-         	grid-column: span 2 / span 2;}
-        
-
-            .card {
-			border: 2px solid var(--black);
-			background-color: var(--black);
-			
-			
-            }
-			      .card img:hover {
-            opacity: 1;
-        }
-
-            .card img {
-            width: 100%;
-            height: auto;
-            display: block;
-			opacity:0.3;
-			transition: opacity 0.3s;}
-
+ 
 
 	        .info-bar {
             background-color: var(--black);
@@ -73,7 +48,7 @@
             align-items: center;
             font-size: 14px; }
 
-			 .info-bar a {
+		.info-bar a {
             color: white;
             text-decoration: none;
             margin-left: 20px;
@@ -84,75 +59,232 @@
             opacity: 0.1;
         }
 
-		/* Header grid: left = text, right = empty container where model will be centered */
-		.header-grid {
-			display: grid;
-			grid-template-columns: 1fr minmax(280px, 420px);
-			align-items: center;
-			gap: 24px;
+		/* Header thumbnail */
+		.header-thumb{
+			aspect-ratio: 3 / 1;
+			background-image: url('/RK-Portfolio/clip/clipbanner.png');
+			background-size: 100% auto;
+			background-position:center;
+			background-repeat: no-repeat;
+			align-content: center;
+		
+			
+			margin-left: -1.25rem !important;
+			margin-right: -1.25rem !important;
+			
+			
 		}
 
-		.header-text {
-			z-index: 5;
+
+			/* Center the sketch image and keep it responsive */
+			.fullscreen-img {
+				display: block;
+				margin-left: -1.25rem !important;
+				margin-right: -1.25rem !important;
+				width: calc(100% + 2.5rem) !important;
+				height: auto;
+			}
+
+			/* Full-width model viewer within padded container */
+			model-viewer {
+				margin-left: -1.25rem !important;
+				margin-right: -1.25rem !important;
+				width: calc(100% + 2.5rem) !important;
+			}
+        
+		
+			/* Image gallery grid and modal preview */
+       
+		 
+		.gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+
+		h3 {
+			font-size: 1.5rem;
+			font-weight: 600;
+			margin-top: 2rem;
+			margin-bottom: 1rem;
 		}
 
-		.header-empty {
-			position: relative;
-			width: 100%;
-			min-height: 220px; /* gives the empty cell height so model can center */
-			overflow: visible;
-		}
+        .gallery-item {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #f0f0f0;
+            position: relative;
+        }
 
-		/* Flexible floating model that can be scaled via CSS variables
-		   --model-width: desired width (e.g. 1200px, 90vw)
-		   --model-height: desired height (e.g. 80vh, 600px)
-		*/
-		.floating-model {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
-			width: 2000px;
-			height: 500px;
-			max-width: none;
-			z-index: 9999; /* on top of everything */
-			pointer-events: none; /* allow clicks to pass through */
-		}
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
-		.floating-model model-viewer {
-			width: 100%;
-			height: 100%;
-		}
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            color: #333;
+        }
+
+        .lightbox-close:hover {
+            background: #f0f0f0;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            color: #333;
+        }
+
+        .lightbox-nav:hover {
+            background: white;
+        }
+
+        .lightbox-prev {
+            left: -70px;
+        }
+
+        .lightbox-next {
+            right: -70px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+            }
+        }
 		</style>
+
 		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 	</head>
 
-	<body>
+<body>
 		<div class="container">
-				    <div class="info-bar">
-        <span><a href="/RK-Portfolio/index.html"><- back</a></span>
-        <nav>
-            <a href="/RK-Portfolio/sketches">sketches</a>
-			<a >|</a>
-			<a href="/RK-Portfolio/about">about</a>
-        </nav>
-    </div>
-				<div class="bordercontainer">
+			<div class="info-bar">
+				<span><a href="/RK-Portfolio/index.html"><- back</a></span>
+				<nav>
+					<a href="/sketches">sketches</a>
+					<a>|</a>
+					<a href="/about">about</a>
+				</nav>
+			</div>
+
+			<div class="bordercontainer">
 				<header class="site-header">
-					<div class="header-grid">
+					<div class="header-thumb">
 						<div class="header-text">
 							<h1>CLIPBOARD</h1>
-							<h2>Signature Tablet for Hardware Versatility </h2>
+							<h2>Signature Tablet for Hardware Versatility</h2>
 						</div>
-						<div class="header-empty">
-							<div class="floating-model">
-								<model-viewer src="/RK-Portfolio/clip/clip3d.glb" alt="3D model" auto-rotate camera-orbit="0deg 40deg 2m" autoplay ></model-viewer>
-							</div>
-						</div>
+
+
+						
+
 					</div>
 					<hr class="center-line">
-<p>	- Student Project in Cooperation with Signotec -</p>					
+				
+					<p>	- Student Project in Cooperation with Signotec -</p>					
 
 <p>Signature tablets are important devices for industries that work with
 legally binding documents. Clients who purchase these tablets need
@@ -183,22 +315,137 @@ their document in an inflexible position, all the while potentially
 under the watchful eye of the contractor. Providing more control to
 balance this relationship is key.</p>
 
-<img src="/RK-Portfolio/clip/clipsketches.png" class="sketches">
+					<img src="/RK-Portfolio/clip/clipsketches1.png" class="fullscreen-img">
+					<img src="/RK-Portfolio/clip/clipsketches2.png" class="fullscreen-img">
 
+						<div class="gallery-grid" id="gallery-2">
+          		 	 <!-- Gallery items will be injected here by JavaScript -->
+       			 	</div>
 
+					<hr class="center-line">
+					<model-viewer
+  					src="/RK-Portfolio/clip/clip3d.glb"
+					camera-orbit="-0deg 10deg 1m"
+  					alt="3D model"
+ 					 auto-rotate
+  					camera-controls
+   					 style="width: 400px; height: 600px; display: block; margin: 0 auto;">
+					
+					</model-viewer>
+					<hr class="center-line">
 
+					
+					<div class="gallery-grid" id="gallery-1">
+          		 	 <!-- Gallery items will be injected here by JavaScript -->
+       			 	</div>
 
+				
+				
+				<!-- Lightbox modal -->
+				<div class="lightbox" id="lightbox">
+					<div class="lightbox-content">
+						<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+						<img id="lightbox-img" src="" alt="Preview">
+						<button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">❮</button>
+						<button class="lightbox-nav lightbox-next" onclick="changeImage(1)">❯</button>
+					</div>
+				</div>
 
-
-
-		 
-			</header>
-			<main>
-
-			</main>
+				</header>
+				<main>
+				
+				</main>
+			</div>
+			
+			<div class="info-bar"></div>
 		</div>
-		 <div class="info-bar">	</div>
-		
+
+		<script>
+			// Gallery 1 images
+			const images1 = [
+			'/RK-Portfolio/clip/cliprender (2).png',
+			"/RK-Portfolio/clip/cliprender (1).png",
+			"/RK-Portfolio/clip/clipinside (1).png",
+			"/RK-Portfolio/clip/clipinside (2).png",
+			"/RK-Portfolio/clip/clipinside (3).png",
+			];
+
+			// Gallery 2 images - Add your images here
+			const images2 = [
+			'/RK-Portfolio/clip/clipmod1.png',
+			'/RK-Portfolio/clip/clipmod3.png',
+			'/RK-Portfolio/clip/clipmod2.png',
+			'/RK-Portfolio/clip/clipmod4.png',
+	
+			];
+
+			let currentImageIndex = 0;
+			let currentGallery = images1;
+			const lightbox = document.getElementById('lightbox');
+			const lightboxImg = document.getElementById('lightbox-img');
+
+			// Create gallery items for both galleries
+			function createGallery(galleryId, imageArray) {
+				const gallery = document.getElementById(galleryId);
+				imageArray.forEach((src, index) => {
+					const item = document.createElement('div');
+					item.className = 'gallery-item';
+					item.onclick = () => openLightbox(index, imageArray);
+					
+					const img = document.createElement('img');
+					img.src = src;
+					img.alt = `Gallery image ${index + 1}`;
+					img.loading = 'lazy';
+					
+					item.appendChild(img);
+					gallery.appendChild(item);
+				});
+			}
+
+			createGallery('gallery-1', images1);
+			createGallery('gallery-2', images2);
+
+			function openLightbox(index, imageArray) {
+				currentImageIndex = index;
+				currentGallery = imageArray;
+				lightboxImg.src = imageArray[index];
+				lightbox.classList.add('active');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeLightbox() {
+				lightbox.classList.remove('active');
+				document.body.style.overflow = 'auto';
+			}
+
+			function changeImage(direction) {
+				currentImageIndex += direction;
+				
+				if (currentImageIndex < 0) {
+					currentImageIndex = currentGallery.length - 1;
+				} else if (currentImageIndex >= currentGallery.length) {
+					currentImageIndex = 0;
+				}
+				
+				lightboxImg.src = currentGallery[currentImageIndex];
+			}
+
+			// Close lightbox on background click
+			lightbox.addEventListener('click', (e) => {
+				if (e.target === lightbox) {
+					closeLightbox();
+				}
+			});
+
+			// Keyboard navigation
+			document.addEventListener('keydown', (e) => {
+				if (!lightbox.classList.contains('active')) return;
+				
+				if (e.key === 'Escape') closeLightbox();
+				if (e.key === 'ArrowLeft') changeImage(-1);
+				if (e.key === 'ArrowRight') changeImage(1);
+			});
+		</script>
 	</body>
 </html>
 
