@@ -1,321 +1,79 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Portfolio</title>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-		<style>
-			:root { --max-width: 1600px; } 
-:root {
-  --bgwhite: #f0f0f0;
-  --black: #1a1a1a;
-  --primary: #3b82f6;
-  --accent: rgb(34, 197, 94);
-}
 
-			html,body { height:100%; margin:0; overflow-x:hidden; }
-			body { font-family: 'Inter', Arial, sans-serif; background:var(--bgwhite); color:var(--black); }
-			
-			.container { max-width:var(--max-width); margin:0 auto; background:var(--bgwhite); border: 2px solid var(--black); overflow: visible; }
-			
-			.bordercontainer { max-width:var(--max-width); margin:0 auto; margin-bottom: 2rem;  margin-left: 1.25rem; margin-right: 1.25rem; }
-		
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Portfolio</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
 
-			header.site-header { text-align:left;  position: relative; }
-			header.site-header h1 { margin:0; font-size:2.5rem; font-weight:700; letter-spacing: -0.02em;margin-left: +1.25rem !important;
-			margin-right: +1.25rem }
-			header.site-header h2 { margin:0; font-size:1; font-weight:100; margin-bottom: 2rem;margin-left: +1.25rem !important;
-			margin-right: +1.25rem}
-			
+<style>
+	.header-thumb {
+		background-image: url('/RK-Portfolio/mid/midthumb.png');
+	}
+</style>
 
-			.center-line {
- 			width: 20%;       /* or any width you want */
- 			margin: 35px auto; /* centers it horizontally and adds vertical space */
- 			border: 1px solid var(--black); /* line color and thickness */ 
-			 }
-
-
-
- 
-
-	        .info-bar {
-            background-color: var(--black);
-            color: var(--bgwhite);
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px; }
-
-		.info-bar a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            transition: opacity 0.3s;
-        }
-
-        .info-bar a:hover {
-            opacity: 0.1;
-        }
-
-		/* Header thumbnail */
-		.header-thumb{
-			aspect-ratio: 3 / 1;
-			background-image: url('/RK-Portfolio/mid/midthumb.png');
-			background-size: 100% auto;
-			background-position:center;
-			background-repeat: no-repeat;
-			align-content: center;
-		
-			
-			margin-left: -1.25rem !important;
-			margin-right: -1.25rem !important;
-			
-			
-		}
-
-
-			/* Center the sketch image and keep it responsive */
-			.fullscreen-img {
-				display: block;
-				margin-left: -1.25rem !important;
-				margin-right: -1.25rem !important;
-				width: calc(100% + 2.5rem) !important;
-				height: auto;
-			}
-
-			/* Full-width model viewer within padded container */
-			model-viewer {
-				margin-left: -1.25rem !important;
-				margin-right: -1.25rem !important;
-				width: calc(100% + 2.5rem) !important;
-			}
-        
-		
-			/* Image gallery grid and modal preview */
-       
-		 
-		.gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: #f0f0f0;
-            position: relative;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Lightbox styles */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: zoomIn 0.3s ease;
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease;
-            color: #333;
-        }
-
-        .lightbox-close:hover {
-            background: #f0f0f0;
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease;
-            color: #333;
-        }
-
-        .lightbox-nav:hover {
-            background: white;
-        }
-
-        .lightbox-prev {
-            left: -70px;
-        }
-
-        .lightbox-next {
-            right: -70px;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 15px;
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .lightbox-nav {
-                display: none;
-            }
-
-            .lightbox-close {
-                top: 10px;
-                right: 10px;
-            }
-        }
-		</style>
-
-		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-	</head>
 
 <body>
-		<div class="container">
-			<div class="info-bar">
-				<span><a href="/RK-Portfolio/index.html"><- back</a></span>
-				<nav>
-					<a href="/sketches">sketches</a>
-					<a>|</a>
-					<a href="/about">about</a>
-				</nav>
-			</div>
 
-			<div class="bordercontainer">
-				<header class="site-header">
-					<div class="header-thumb">
-						<div class="header-text">
-							<h1>MID 4 TYPE H</h1>
-							<h2>NISSAN MID4 (RE)IMAGINED</h2>
-						</div>
+	<div class="container">
+		<div class="info-bar">
+			<span><a href="/RK-Portfolio/index.html"> <- back</a></span>
+			<nav>
+				<a href="/RK-Portfolio/sketches">sketches</a>
+				<a>|</a>
+				<a href="/RK-Portfolio/about">about</a>
+			</nav>
+		</div>
 
-
-						
-
+		<div class="bordercontainer">
+			<header class="site-header">
+				<div class="header-thumb">
+					<div class="header-text">
+						<h1>MID 4 TYPE H</h1>
+						<h2> NISSAN MID4 (RE)IMAGINED</h2>
 					</div>
-					<hr class="center-line">
-				
-					<p>- Student Project -</p>
+				</div>
 
-					<p>Before the Honda NSX the idea of a Japanese super car already
+				<hr class="center-line">
+
+				<p>- Student Project -</p>
+
+				<p>Before the Honda NSX the idea of a Japanese super car already
 					existed. The Nissan MID4 was one of those unrealized visions. Clearly
 					<strong>inspired by European mid-engined sports cars</strong>, the MIDs
 					and especially the MID-II has that dynamic and
 					<strong>organically futurist</strong> look, that really set it apart
 					from other Japanese cars. Sadly the car never made it to production. In
 					this project, I have <strong>reconceptualized</strong> the MID for the
-					modern day.</p>
-					<p>The MID4-II has a truly great side profile.
+					modern day.
+				</p>
+				<p>The MID4-II has a truly great side profile.
 					Beltline, shoulder line and the vent line up, creating a dynamic
-					ribbon-like shape that works well inside the A-line. This together with 
+					ribbon-like shape that works well inside the A-line. This together with
 					the soft flowing volumes and its subtle dome hood are <strong>
-					essential </strong>  to the MID's identity. </p>
-					<img src="/RK-Portfolio/mid/midsketches.png" class="fullscreen-img">
+						essential </strong> to the MID's identity. </p>
+
+				<img src="/RK-Portfolio/mid/midsketches.png" class="fullscreen-img">
 
 
-					<p>- 3D-SKETCH IN VR -</p>
-					
-					<model-viewer
-  					src="/RK-Portfolio/mid/midgs.glb"
-					camera-orbit="-150deg 85deg 1m"
-  					alt="3D model"
- 					 auto-rotate
-  					camera-controls
-   					 style="width: 100%; height: 300px; display: block; margin: 0 auto;">
-					
-					</model-viewer>
+				<p>- 3D-SKETCH IN VR -</p>
 
-					<p> <strong> Gravity Sketch </strong> is a great way to bring my sketches into 3D space, 
+				<model-viewer src="/RK-Portfolio/mid/midgs.glb" camera-orbit="-150deg 85deg 1m" alt="3D model"
+					auto-rotate camera-controls style="width: 100%; height: 300px; display: block; margin: 0 auto;">
+				</model-viewer>
+
+				<p> <strong> Gravity Sketch </strong> is a great way to bring my sketches into 3D space,
 					while working with the real scale and proportions in VR. Because
-					working with SUB-D is quite fast, I am still able to iterate and explore. 
+					working with SUB-D is quite fast, I am still able to iterate and explore.
 					In this case, especially the back end has gone through some changes.
 					The model was then directly brought to Alias as a reference for more refined surfacing.</p>
-					
 
-					<div class="gallery-grid" id="gallery">
-          		 	 <!-- Gallery items will be injected here by JavaScript -->
-       			 	</div>
+
+				<div class="gallery-grid" id="gallery"> </div>
 
 				<!-- Lightbox modal -->
 				<div class="lightbox" id="lightbox">
@@ -327,21 +85,18 @@
 					</div>
 				</div>
 
-				</header>
-				<main>
-				
-				</main>
-			</div>
-			
-			<div class="info-bar"></div>
 		</div>
+		<div class="info-bar"> </div>
+
+
+
+
 
 		<script>
 			// Sample images - Replace these URLs with your actual image URLs
 			const images = [
 				'/RK-Portfolio/mid/midalias (1).png',
 				'/RK-Portfolio/mid/midalias.png',
-				
 				'/RK-Portfolio/mid/midvar.jpg',
 				'/RK-Portfolio/mid/midvar (1).jpg',
 				'/RK-Portfolio/mid/midvar (2).jpg',
@@ -358,12 +113,12 @@
 				const item = document.createElement('div');
 				item.className = 'gallery-item';
 				item.onclick = () => openLightbox(index);
-				
+
 				const img = document.createElement('img');
 				img.src = src;
 				img.alt = `Gallery image ${index + 1}`;
 				img.loading = 'lazy';
-				
+
 				item.appendChild(img);
 				gallery.appendChild(item);
 			});
@@ -382,13 +137,13 @@
 
 			function changeImage(direction) {
 				currentImageIndex += direction;
-				
+
 				if (currentImageIndex < 0) {
 					currentImageIndex = images.length - 1;
 				} else if (currentImageIndex >= images.length) {
 					currentImageIndex = 0;
 				}
-				
+
 				lightboxImg.src = images[currentImageIndex];
 			}
 
@@ -402,12 +157,15 @@
 			// Keyboard navigation
 			document.addEventListener('keydown', (e) => {
 				if (!lightbox.classList.contains('active')) return;
-				
+
 				if (e.key === 'Escape') closeLightbox();
 				if (e.key === 'ArrowLeft') changeImage(-1);
 				if (e.key === 'ArrowRight') changeImage(1);
 			});
-		</script>
-	</body>
-</html>
 
+		</script>
+
+</body>
+
+
+</html>
