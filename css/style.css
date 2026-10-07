@@ -26,7 +26,7 @@ body {
     max-width: var(--max-width);
     margin: 0 auto;
     background: var(--bgwhite);
-    border: 2px solid var(--black);
+    border: 1px solid var(--black);
     overflow: visible;
 }
 
@@ -62,12 +62,29 @@ header.site-header h2 {
 }
 
 .center-line {
-    width: 20%;
+    width: 50%;
     /* or any width you want */
     margin: 35px auto;
-    /* centers it horizontally and adds vertical space */
-    border: 1px solid var(--black);
-    /* line color and thickness */
+    border: 0;
+    border-top: 1px solid var(--black);
+    height: 0;
+    line-height: 0;
+}
+
+.content-grid {
+    grid-template-columns: var(--grid-columns);
+    //*border: 2px solid var(--black);*/
+}
+
+.content-grid > * {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+model-viewer {
+    display: block;
+    width: 100%;
+    max-width: 100%;
 }
 
 .info-bar {
@@ -99,7 +116,7 @@ header.site-header h2 {
     background-position: center;
     background-repeat: no-repeat;
     align-content: center;
-
+  
 
     margin-left: -1.25rem !important;
     margin-right: -1.25rem !important;
@@ -115,14 +132,13 @@ header.site-header h2 {
     height: auto;
 }
 
-/* Full-width model viewer within padded container */
-model-viewer {
-    margin-left: -1.25rem !important;
-    margin-right: -1.25rem !important;
-    width: calc(100% + 2.5rem) !important;
+.icon-img {
+   height: 50px;
+   margin-top: 1em;
+   margin-bottom: 1em;
+    margin-left: 0.5em;
+   margin-right: 0.5em;
 }
-
-
 /* Image gallery grid and modal preview */
 
 .gallery-grid {
@@ -268,6 +284,10 @@ h3 {
 }
 
 @media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
     .gallery-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 15px;
