@@ -3,21 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test 3D</title>
+    <link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+    <title>Test</title>
 </head>
 <body>
-     <script type="module"
+    <script type="module"
   src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
 </script>
 
-<model-viewer
-  src="/RK-Portfolio/mid/mid.glb"
-  alt="3D model"
-  auto-rotate
-  camera-controls
-  camera-orbit="45deg 75deg 1m"
-    style="width: 1000px; max-width: 100%; height: 400px; display: block; margin: 0 auto;">
-</model-viewer>
+<div class="content-grid" style="--grid-columns: 1fr 1fr; display: grid; gap: 2rem;">
+  <div class="text-content1"style="border: 2px solid var(--black);">
+    <p>This is a test of a grid.</p>
+  </div>
+  <div class="text-content2"style="border: 2px solid var(--black);">
+    <p>This is a test of a grid.</p>
+  </div>
+</div>  
 
+
+<div class="center-line"></div>
+
+
+<div class="content-grid" style="--grid-rows: 1fr 1fr; display: grid; gap: 2rem;">
+  <div class="content1" style="border: 2px solid var(--black);">
+    <p>This is a test of a grid.</p>
+  </div>
+  <div class="text-content2"style="border: 2px solid var(--black);">
+    <p>This is a test of a grid.</p>
+  </div> 
+</div>
+
+<div class="center-line"></div>
+
+<div class="content-grid" style="--grid-columns: 1fr 1fr; display: grid; gap: 2rem;">
+  <div class="text-content1"style="border: 2px solid var(--black);">
+    <p>This is a test of a grid.</p>
+  </div>
+  <div class="text-content2"style="border: 2px solid var(--black);">
+    <div class="content-grid" style="--grid-columns:1fr --grid-rows: 1fr 1fr; display: grid; gap: 2rem;">
+      <div class="content1" style="border: 2px solid var(--black);">
+        <p>This is a test of a grid.</p>
+      </div>
+      <div class="text-content2"style="border: 2px solid var(--black);">
+        <p>This is a test of a grid.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="center-line"></div>
+
+<div class="content-grid" style="--grid-columns: 1fr 1fr; display: grid; gap: 2rem;">
+  <div class="text-content1"style="border: 2px solid var(--black);">
+    <p>This is a test of a grid.</p>
+  </div>
+  <div class="text-content2"style="border: 2px solid var(--black);">
+    <div class="content-grid" style="--grid-columns:1fr --grid-rows: 1fr 1fr; display: grid; gap: 2rem;">
+      <div class="content1" style="border: 2px solid var(--black);">
+        <div class="gallery-grid" id="midalias"></div>
+      </div>
+      <div class="text-content2"style="border: 2px solid var(--black);">
+        <div class="gallery-grid" id="test"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+        <div class="lightbox-content">
+            <button class="lightbox-close" type="button" aria-label="Close image preview">✕</button>
+            <img id="lightbox-img" src="" alt="Preview">
+            <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">❮</button>
+            <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">❯</button>
+        </div>
+    </div>
+
+    <script>
+        const galleryImages = {
+            midalias: [
+                '/RK-Portfolio/mid/midalias (1).png',
+                '/RK-Portfolio/mid/midalias.png',
+                '/RK-Portfolio/mid/midvar.jpg',
+                '/RK-Portfolio/mid/midvar (1).jpg',
+                '/RK-Portfolio/mid/midvar (2).jpg',
+                '/RK-Portfolio/mid/midgscomp.png',
+            ],
+            test: [
+              '/RK-Portfolio/assets/test1.jpg',
+            ],
+        };  
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        let currentGallery = [];
+        let currentImageIndex = 0;
+
+        Object.entries(galleryImages).forEach(([galleryId, images]) => {
+            const gallery = document.getElementById(galleryId);
+
+            images.forEach((src, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.addEventListener('click', () => openLightbox(images, index));
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `${galleryId} gallery image ${index + 1}`;
+                img.loading = 'lazy';
+
+                item.appendChild(img);
+                gallery.appendChild(item);
+            });
+        });
+
+        function openLightbox(images, index) {
+            currentGallery = images;
+            currentImageIndex = index;
+            lightboxImg.src = currentGallery[currentImageIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + currentGallery.length) % currentGallery.length;
+            lightboxImg.src = currentGallery[currentImageIndex];
+        }
+
+        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        document.querySelector('.lightbox-prev').addEventListener('click', () => changeImage(-1));
+        document.querySelector('.lightbox-next').addEventListener('click', () => changeImage(1));
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'ArrowLeft') changeImage(-1);
+            if (event.key === 'ArrowRight') changeImage(1);
+        });
+    </script>
 </body>
 </html>

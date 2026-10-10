@@ -3,8 +3,10 @@
 }
 
 :root {
-    --bgwhite: #f0f0f0;
-    --black: #1a1a1a;
+    /*--bgwhite: #f0f0f0;*/
+    --bgwhite: #FFFFFF;
+    /*--black: #1a1a1a;*/
+    --black: #222222;
     --primary: #3b82f6;
     --accent: rgb(34, 197, 94);
 }
@@ -30,6 +32,12 @@ body {
     overflow: visible;
 }
 
+.gallerycontainer {
+
+    /*border: 1px solid var(--black);*/
+    overflow: visible;
+}
+
 .bordercontainer {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -41,6 +49,7 @@ body {
 header.site-header {
     text-align: left;
     position: relative;
+    color: var(--black);
 }
 
 header.site-header h1 {
@@ -50,6 +59,7 @@ header.site-header h1 {
     letter-spacing: -0.02em;
     margin-left: +1.25rem !important;
     margin-right: +1.25rem
+    color: var(--black);
 }
 
 header.site-header h2 {
@@ -71,9 +81,20 @@ header.site-header h2 {
     line-height: 0;
 }
 
+.spacer {
+     width: 50%;
+    /* or any width you want */
+    margin: 35px auto;
+    border: 0;
+  
+    height: 0;
+    line-height: 0;
+}
+
 .content-grid {
     grid-template-columns: var(--grid-columns);
-    //*border: 2px solid var(--black);*/
+    grid-template-rows: var(--grid-rows);
+   /*border: 2px solid var(--black);*/
 }
 
 .content-grid > * {
@@ -143,8 +164,8 @@ model-viewer {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1em;
     margin-bottom: 3rem;
 }
 
@@ -282,6 +303,7 @@ h3 {
 .lightbox-next {
     right: -70px;
 }
+
 
 @media (max-width: 768px) {
     .content-grid {

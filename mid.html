@@ -12,7 +12,7 @@
 
 <style>
 	.header-thumb {
-		background-image: url('/RK-Portfolio/mid/midthumb.png');
+		background-image: url('/RK-Portfolio/mid/midthumb2.png');
 	}
 </style>
 
@@ -60,22 +60,28 @@
 					the soft flowing volumes and its subtle dome hood are <strong>
 						essential </strong> to the MID's identity. </p>
 				</div>
-				<div class="text-content2" style="text-align: right;">
+
+				<div class="text-content2" style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
+				
+
+				<div class="icons">
 				<img src="/RK-Portfolio/assets/iconalias.png" class="icon-img">
 				<img src="/RK-Portfolio/assets/icongs.png" class="icon-img">
-			
-				
-				</div> </div>
+				</div>
+			<div class="spacer"></div>
+			<div class="gallerycontainer" style="width: 65%; max-width: none;">
+			<div class="gallery-grid" id="midsketches"> </div> </div>
+			</div>
+
+			</div> 
 
 
 				
-				<hr class="center-line">
+				<hr class="center-line"> 
 
 
 
-				<img src="/RK-Portfolio/mid/midsketches1.png" class="fullscreen-img">
-				<img src="/RK-Portfolio/mid/midsketches2.png" class="fullscreen-img">
-				<img src="/RK-Portfolio/mid/midsketches3.png" class="fullscreen-img">
+
 
 
 			
@@ -109,7 +115,7 @@
 
 				<hr class="center-line">
 
-				<div class="gallery-grid" id="gallery"> </div>
+				<div class="gallery-grid" id="midalias"> </div>
 
 				<!-- Lightbox modal -->
 				<div class="lightbox" id="lightbox">
@@ -134,77 +140,80 @@
 
 
 		<script>
-			// Sample images - Replace these URLs with your actual image URLs
-			const images = [
-				'/RK-Portfolio/mid/midalias (1).png',
-				'/RK-Portfolio/mid/midalias.png',
-				'/RK-Portfolio/mid/midvar.jpg',
-				'/RK-Portfolio/mid/midvar (1).jpg',
-				'/RK-Portfolio/mid/midvar (2).jpg',
-				'/RK-Portfolio/mid/midgscomp.png',
-			];
+        const galleryImages = {
+            midsketches: [
+                '/RK-Portfolio/mid/midsketches1.png',
+                '/RK-Portfolio/mid/midsketches2.png',
+                '/RK-Portfolio/mid/midsketches3.png',
+            ],
+            midalias: [
+                '/RK-Portfolio/mid/midalias (1).png',
+                '/RK-Portfolio/mid/midalias.png',
+                '/RK-Portfolio/mid/midvar.jpg',
+                '/RK-Portfolio/mid/midvar (1).jpg',
+                '/RK-Portfolio/mid/midvar (2).jpg',
+                '/RK-Portfolio/mid/midgscomp.png',
+            ],
+         
+        };
 
-			let currentImageIndex = 0;
-			const gallery = document.getElementById('gallery');
-			const lightbox = document.getElementById('lightbox');
-			const lightboxImg = document.getElementById('lightbox-img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        let currentGallery = [];
+        let currentImageIndex = 0;
 
-			// Create gallery items
-			images.forEach((src, index) => {
-				const item = document.createElement('div');
-				item.className = 'gallery-item';
-				item.onclick = () => openLightbox(index);
+        Object.entries(galleryImages).forEach(([galleryId, images]) => {
+            const gallery = document.getElementById(galleryId);
+            if (!gallery) return;
 
-				const img = document.createElement('img');
-				img.src = src;
-				img.alt = `Gallery image ${index + 1}`;
-				img.loading = 'lazy';
+            images.forEach((src, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.addEventListener('click', () => openLightbox(images, index));
 
-				item.appendChild(img);
-				gallery.appendChild(item);
-			});
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `${galleryId} gallery image ${index + 1}`;
+                img.loading = 'lazy';
 
-			function openLightbox(index) {
-				currentImageIndex = index;
-				lightboxImg.src = images[index];
-				lightbox.classList.add('active');
-				document.body.style.overflow = 'hidden';
-			}
+                item.appendChild(img);
+                gallery.appendChild(item);
+            });
+        });
 
-			function closeLightbox() {
-				lightbox.classList.remove('active');
-				document.body.style.overflow = 'auto';
-			}
+        function openLightbox(images, index) {
+            currentGallery = images;
+            currentImageIndex = index;
+            lightboxImg.src = currentGallery[currentImageIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-			function changeImage(direction) {
-				currentImageIndex += direction;
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
-				if (currentImageIndex < 0) {
-					currentImageIndex = images.length - 1;
-				} else if (currentImageIndex >= images.length) {
-					currentImageIndex = 0;
-				}
+        function changeImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + currentGallery.length) % currentGallery.length;
+            lightboxImg.src = currentGallery[currentImageIndex];
+        }
 
-				lightboxImg.src = images[currentImageIndex];
-			}
+        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        document.querySelector('.lightbox-prev').addEventListener('click', () => changeImage(-1));
+        document.querySelector('.lightbox-next').addEventListener('click', () => changeImage(1));
 
-			// Close lightbox on background click
-			lightbox.addEventListener('click', (e) => {
-				if (e.target === lightbox) {
-					closeLightbox();
-				}
-			});
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
 
-			// Keyboard navigation
-			document.addEventListener('keydown', (e) => {
-				if (!lightbox.classList.contains('active')) return;
-
-				if (e.key === 'Escape') closeLightbox();
-				if (e.key === 'ArrowLeft') changeImage(-1);
-				if (e.key === 'ArrowRight') changeImage(1);
-			});
-
-		</script>
+        document.addEventListener('keydown', (event) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'ArrowLeft') changeImage(-1);
+            if (event.key === 'ArrowRight') changeImage(1);
+        });
+    </script>
 
 </body>
 
