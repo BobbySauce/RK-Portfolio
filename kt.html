@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Portfolio</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<style>
+	.header-thumb {
+		background-image: url('/RK-Portfolio/kt/kthumb.png');
+	}
+</style>
+
+
+<body>
+
+	<div class="container">
+		<div class="info-bar">
+			<span><a href="/RK-Portfolio/index.html"> <- back</a></span>
+			<nav>
+				<a href="/RK-Portfolio/sketches">sketches</a>
+				<a>|</a>
+				<a href="/RK-Portfolio/about">about</a>
+			</nav>
+		</div>
+
+		<div class="bordercontainer">
+			<header class="site-header">
+				<div class="header-thumb">
+					<div class="header-text">
+						<h1>KONSTRUKTIER</h1>
+						<h2> A STEAM toy</h2>
+					</div>
+				</div>
+
+
+				<div class="content-grid" style="--grid-columns: 1fr 2fr; display: grid; gap: 2rem;">
+
+				<div class="text-content1">
+				<p>- Student Project -</p>
+
+			
+				<p>Konstruktier is a wooden toy set for children aged 4 and up that playfully teaches the physics of building.
+				</p>
+				<p>The goal: Construct a stable building using a limited set of parts. Learn to tame the forces that act on structures. Counterbalance and use load-bearing walls to solve challenging tasks, or feel free to make your own architectural dreams become reality.
+				</div>
+
+				<div class="text-content2" style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
+				
+
+				<div class="icons">
+				<img src="/RK-Portfolio/assets/iconblender.png" class="icon-img">
+
+				
+				</div>
+			<div class="spacer"></div>
+			<div class="gallerycontainer" style="width: 65%; max-width: none;">
+			<div class="gallery-grid" id="midsketches"> </div> </div>
+			</div>
+			</div> 
+
+						<div class="center-line"></div>
+
+		
+		
+			
+
+		<img id="no-line-image-2" src="/RK-Portfolio/kt/box.png" data-hover-src="/RK-Portfolio/kt/box.gif" width="500" alt="No line image 2">
+
+
+				
+				<hr class="center-line"> 
+
+
+
+
+
+
+			
+			
+			
+
+
+
+
+
+
+		</div>
+		<div class="info-bar"> </div>
+
+
+
+
+
+		<script>
+        const galleryImages = {
+            midsketches: [
+                '/RK-Portfolio/mid/midsketches1.png',
+                '/RK-Portfolio/mid/midsketches2.png',
+                '/RK-Portfolio/mid/midsketches3.png',
+            ],
+            midalias: [
+                '/RK-Portfolio/mid/midalias (1).png',
+                '/RK-Portfolio/mid/midalias.png',
+                '/RK-Portfolio/mid/midvar.jpg',
+                '/RK-Portfolio/mid/midvar (1).jpg',
+                '/RK-Portfolio/mid/midvar (2).jpg',
+                '/RK-Portfolio/mid/midgscomp.png',
+            ],
+         
+        };
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const noLineImage = document.getElementById('no-line-image-2');
+        const noLineImageSrc = noLineImage.src;
+
+        noLineImage.addEventListener('mouseenter', () => {
+            noLineImage.src = noLineImage.dataset.hoverSrc;
+        });
+        noLineImage.addEventListener('mouseleave', () => {
+            noLineImage.src = noLineImageSrc;
+        });
+
+        let currentGallery = [];
+        let currentImageIndex = 0;
+
+        Object.entries(galleryImages).forEach(([galleryId, images]) => {
+            const gallery = document.getElementById(galleryId);
+            if (!gallery) return;
+
+            images.forEach((src, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.addEventListener('click', () => openLightbox(images, index));
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `${galleryId} gallery image ${index + 1}`;
+                img.loading = 'lazy';
+
+                item.appendChild(img);
+                gallery.appendChild(item);
+            });
+        });
+
+        function openLightbox(images, index) {
+            currentGallery = images;
+            currentImageIndex = index;
+            lightboxImg.src = currentGallery[currentImageIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + currentGallery.length) % currentGallery.length;
+            lightboxImg.src = currentGallery[currentImageIndex];
+        }
+
+        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        document.querySelector('.lightbox-prev').addEventListener('click', () => changeImage(-1));
+        document.querySelector('.lightbox-next').addEventListener('click', () => changeImage(1));
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'ArrowLeft') changeImage(-1);
+            if (event.key === 'ArrowRight') changeImage(1);
+        });
+    </script>
+
+</body>
+
+
+</html>
