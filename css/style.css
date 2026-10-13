@@ -58,7 +58,7 @@ header.site-header h1 {
     font-weight: 700;
     letter-spacing: -0.02em;
     margin-left: +1.25rem !important;
-    margin-right: +1.25rem
+    margin-right: +1.25rem;
     color: var(--black);
 }
 
@@ -160,6 +160,75 @@ model-viewer {
     margin-left: 0.5em;
    margin-right: 0.5em;
 }
+
+.image-hover {
+    position: relative;
+    width: min(500px, 100%);
+}
+
+.image-hover img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.image-hover::after {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(34, 34, 34, 0.8);
+    color: #fff;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .image-hover::after {
+        content: "HOVER";
+    }
+
+    .image-hover:hover::after {
+        opacity: 0;
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .image-hover::after {
+        content: "TAP";
+    }
+
+    .image-hover.is-activated::after {
+        opacity: 0;
+    }
+}
+
+.hover-image {
+    position: relative;
+    width: min(200px, 100%);
+}
+
+.hover-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.hover-image .hover-image-alternate {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.hover-image:hover .hover-image-alternate {
+    opacity: 1;
+}
+
 /* Image gallery grid and modal preview */
 
 .gallery-grid {

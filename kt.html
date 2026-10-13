@@ -70,7 +70,11 @@
 		
 			
 
-		<img id="no-line-image-2" src="/RK-Portfolio/kt/box.png" data-hover-src="/RK-Portfolio/kt/box.gif" width="500" alt="No line image 2">
+		<div class="image-hover">
+			<img id="box" src="/RK-Portfolio/kt/box.png" data-hover-src="/RK-Portfolio/kt/box.gif" width="500" alt="Konstruktier box">
+		</div>
+       
+        
 
 
 				
@@ -98,34 +102,50 @@
 
 
 		<script>
+			// Swap images on hover for mouse users and toggle them on touch.
+			document.querySelectorAll('img[data-hover-src]').forEach((image) => {
+				const stillImageSrc = image.src;
+				let isShowingHoverImage = false;
+
+				const showHoverImage = () => {
+					image.src = image.dataset.hoverSrc;
+					isShowingHoverImage = true;
+				};
+				const showStillImage = () => {
+					image.src = stillImageSrc;
+					isShowingHoverImage = false;
+				};
+
+				if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+					image.addEventListener('mouseenter', showHoverImage);
+					image.addEventListener('mouseleave', showStillImage);
+				}
+
+				image.addEventListener('pointerdown', (event) => {
+					if (event.pointerType !== 'touch') return;
+					image.parentElement.classList.add('is-activated');
+					if (isShowingHoverImage) {
+						showStillImage();
+					} else {
+						showHoverImage();
+					}
+				});
+			});
+		</script>
+
+
+		<script>
         const galleryImages = {
             midsketches: [
                 '/RK-Portfolio/mid/midsketches1.png',
                 '/RK-Portfolio/mid/midsketches2.png',
                 '/RK-Portfolio/mid/midsketches3.png',
             ],
-            midalias: [
-                '/RK-Portfolio/mid/midalias (1).png',
-                '/RK-Portfolio/mid/midalias.png',
-                '/RK-Portfolio/mid/midvar.jpg',
-                '/RK-Portfolio/mid/midvar (1).jpg',
-                '/RK-Portfolio/mid/midvar (2).jpg',
-                '/RK-Portfolio/mid/midgscomp.png',
-            ],
-         
+   
         };
 
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-        const noLineImage = document.getElementById('no-line-image-2');
-        const noLineImageSrc = noLineImage.src;
-
-        noLineImage.addEventListener('mouseenter', () => {
-            noLineImage.src = noLineImage.dataset.hoverSrc;
-        });
-        noLineImage.addEventListener('mouseleave', () => {
-            noLineImage.src = noLineImageSrc;
-        });
 
         let currentGallery = [];
         let currentImageIndex = 0;
