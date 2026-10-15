@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Portfolio</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+	<style>
+		.kt-page {
+			--kt-ink: #222;
+			--kt-muted: #686868;
+			--kt-paper: #f5f3ef;
+			--kt-line: #d8d5cf;
+			font-family: 'Inter', Arial, sans-serif;
+			color: var(--kt-ink);
+			background: #fff;
+		}
+
+		.kt-page .container {
+			max-width: 1280px;
+			background: #fff;
+		}
+
+		.kt-page .info-bar {
+			background: var(--kt-ink);
+			color: #fff;
+		}
+
+		.kt-page .info-bar a {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.kt-page .info-bar nav {
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+		}
+
+		.kt-page .bordercontainer {
+			margin: 0 auto 3rem;
+			padding: 0 clamp(1.25rem, 5vw, 4.5rem);
+			max-width: 1180px;
+		}
+
+		.kt-page .header-thumb {
+			position: relative;
+			display: flex;
+			align-items: flex-end;
+			min-height: clamp(300px, 42vw, 520px);
+			margin: 0 calc(clamp(1.25rem, 5vw, 4.5rem) * -1) 3rem !important;
+			padding: clamp(2rem, 6vw, 5rem);
+			box-sizing: border-box;
+			background-image: url('/RK-Portfolio/kt/kthumb.png');
+			background-size: cover;
+			background-position: center;
+		}
+
+		.kt-page .header-thumb::before {
+			position: absolute;
+			inset: 0;
+			content: "";
+			background: linear-gradient(90deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.02) 85%);
+		}
+
+		.kt-page .header-text {
+			position: relative;
+			color: #fff;
+		}
+
+		.kt-page .site-header h1 {
+			margin: 0 !important;
+			color: inherit;
+			font-size: clamp(2.8rem, 8vw, 6rem);
+			line-height: 0.95;
+			letter-spacing: -0.06em;
+		}
+
+		.kt-page .site-header h2 {
+			margin: 0.8rem 0 0 !important;
+			color: inherit;
+			font-size: clamp(1rem, 2vw, 1.4rem);
+			font-weight: 400;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		.kt-page .kt-section {
+			margin: clamp(3.5rem, 8vw, 7rem) 0;
+		}
+
+		.kt-page .kt-intro {
+			display: grid;
+			grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.65fr);
+			gap: clamp(2rem, 7vw, 7rem);
+			align-items: end;
+			padding: 0 clamp(0rem, 3vw, 2rem);
+		}
+
+		.kt-page .kt-copy,
+		.kt-page .kt-overview-copy {
+			max-width: 680px;
+		}
+
+		.kt-page .kt-eyebrow {
+			margin: 0 0 0.9rem;
+			color: var(--kt-muted);
+			font-size: 0.75rem;
+			font-weight: 600;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+		}
+
+		.kt-page .kt-section h3 {
+			margin: 0 0 1.25rem;
+			font-size: clamp(1.8rem, 3.5vw, 3rem);
+			font-weight: 600;
+			letter-spacing: -0.045em;
+			line-height: 1.08;
+		}
+
+		.kt-page .kt-copy p,
+		.kt-page .kt-overview-copy p,
+		.kt-page .kt-section-lede {
+			color: #454545;
+			font-size: clamp(1rem, 1.25vw, 1.1rem);
+			line-height: 1.75;
+		}
+
+		.kt-page .kt-credit {
+			padding-top: 1rem;
+			border-top: 1px solid var(--kt-line);
+			color: var(--kt-muted);
+			font-size: 0.9rem;
+			line-height: 1.8;
+		}
+
+		.kt-page .kt-credit strong {
+			color: var(--kt-ink);
+			font-weight: 600;
+		}
+
+		.kt-page .kt-tool {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 1.25rem 0;
+			border-top: 1px solid var(--kt-line);
+			border-bottom: 1px solid var(--kt-line);
+		}
+
+		.kt-page .kt-tool img {
+			width: 48px;
+			height: 48px;
+			object-fit: contain;
+		}
+
+		.kt-page .kt-tool span {
+			color: var(--kt-muted);
+			font-size: 0.9rem;
+		}
+
+		.kt-page .kt-section-heading {
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: 2rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.kt-page .kt-section-heading h3 {
+			margin-bottom: 0;
+		}
+
+		.kt-page .kt-section-heading .kt-eyebrow {
+			margin-bottom: 0.6rem;
+		}
+
+		.kt-page .gallerycontainer {
+			width: 100% !important;
+		}
+
+		.kt-page .gallery-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: clamp(0.75rem, 2vw, 1.5rem);
+			margin: 0;
+			padding: 0;
+		}
+
+		.kt-page .gallery-item {
+			max-width: none;
+			aspect-ratio: 4 / 3;
+			border-radius: 2px;
+			background: var(--kt-paper);
+		}
+
+		.kt-page .gallery-item img {
+			object-fit: cover;
+		}
+
+		.kt-page .kt-overview {
+			display: grid;
+			grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+			gap: clamp(2rem, 6vw, 5rem);
+			align-items: center;
+		}
+
+		.kt-page .kt-overview-visual {
+			padding: clamp(1rem, 3vw, 2.5rem);
+			background: var(--kt-paper);
+		}
+
+		.kt-page .kt-overview-visual img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		.kt-page .kt-cards {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: clamp(0.75rem, 2vw, 1.5rem);
+		}
+
+		.kt-page .kt-cards figure {
+			margin: 0;
+			padding: clamp(0.5rem, 1.5vw, 1rem);
+			background: var(--kt-paper);
+		}
+
+		.kt-page .kt-cards img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		.kt-page .kt-feature {
+			display: grid;
+			justify-items: center;
+			padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+			background: var(--kt-paper);
+			text-align: center;
+		}
+
+		.kt-page .kt-feature .kt-eyebrow {
+			margin-bottom: 0.75rem;
+		}
+
+		.kt-page .image-hover {
+			width: min(700px, 100%);
+			margin-top: 1rem;
+		}
+
+		.kt-page .image-hover::after {
+			position: static;
+			display: table;
+			margin: 0.75rem auto 0;
+		}
+
+		.kt-page .kt-footer {
+			max-width: 1180px;
+			margin: 0 auto;
+			padding: 1.5rem clamp(1.25rem, 5vw, 4.5rem);
+			border-top: 1px solid var(--kt-line);
+			color: var(--kt-muted);
+			font-size: 0.8rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+		}
+
+		@media (max-width: 700px) {
+			.kt-page .header-thumb {
+				min-height: 320px;
+				margin-bottom: 2rem !important;
+			}
+
+			.kt-page .kt-intro,
+			.kt-page .kt-overview {
+				grid-template-columns: 1fr;
+			}
+
+			.kt-page .kt-intro {
+				gap: 1.5rem;
+			}
+
+			.kt-page .kt-tool {
+				max-width: 220px;
+			}
+
+			.kt-page .kt-section-heading {
+				display: block;
+			}
+		}
+
+		@media (max-width: 520px) {
+			.kt-page .gallery-grid,
+			.kt-page .kt-cards {
+				grid-template-columns: 1fr;
+			}
+
+			.kt-page .gallery-item {
+				aspect-ratio: 4 / 3;
+			}
+		}
+	</style>
+</head>
+
+<body class="kt-page">
+
+	<div class="container">
+		<div class="info-bar">
+			<span><a href="/RK-Portfolio/index.html"> <- back</a></span>
+			<nav>
+				<a href="/RK-Portfolio/sketches">sketches</a>
+				<a>|</a>
+				<a href="/RK-Portfolio/about">about</a>
+			</nav>
+		</div>
+
+		<div class="bordercontainer">
+			<header class="site-header">
+				<div class="header-thumb">
+					<div class="header-text">
+						<h1>KONSTRUKTIER</h1>
+						<h2>A STEAM Toy</h2>
+					</div>
+				</div>
+			</header>
+
+				<section class="kt-section kt-intro">
+					<div class="kt-copy">
+						<p class="kt-eyebrow">One-week student project</p>
+						<h3>A playful introduction to structural engineering.</h3>
+						<p>The goal was to create an engaging educational toy. <strong>Konstruktier</strong> helps children discover how buildings stand, how forces travel, and how thoughtful construction can turn a small set of parts into something strong.</p>
+						<p class="kt-credit">In collaboration with interior architecture students<br><strong>Alexandra Gerbel</strong> &middot; <strong>Lilli Weise</strong></p>
+					</div>
+					<div class="kt-tool">
+						<img src="/RK-Portfolio/assets/iconblender.png" alt="Blender">
+						<span>3D design and visualization</span>
+					</div>
+				</section>
+		 
+				<section class="kt-section">
+					<div class="kt-section-heading">
+						<div>
+							<p class="kt-eyebrow">01 / Design process</p>
+							<h3>From first idea to play</h3>
+						</div>
+					</div>
+					<div class="gallerycontainer">
+						<div class="gallery-grid" id="midsketches" aria-label="Konstruktier design process"></div>
+					</div>
+				</section>
+
+				<section class="kt-section kt-overview">
+					<div class="kt-overview-visual">
+						<img src="/RK-Portfolio/kt/ktmodell.png" alt="Konstruktier wooden construction toy model" loading="lazy">
+					</div>
+					<div class="kt-overview-copy">
+						<p class="kt-eyebrow">02 / How it works</p>
+						<h3>Build, balance, and learn by doing.</h3>
+						<p>Konstruktier is a wooden construction game for children aged four and up. With a limited set of components, players build portable structures while discovering load-bearing walls and how forces are distributed.</p>
+						<p>Challenge cards make every round different. Color sequences determine the order of the floors, while animal characters complicate the build: the giraffe needs two stories, the monkey makes the facade wobble, and the bear pushes a floor out of level.</p>
+						<p>As children solve each challenge, they discover how a building can take on complex forms—and become the architects of their own ideas.</p>
+					</div>
+				</section>
+
+				<section class="kt-section">
+					<div class="kt-section-heading">
+						<div>
+							<p class="kt-eyebrow">03 / The challenge cards</p>
+							<h3>Every build has a new twist.</h3>
+						</div>
+						<p class="kt-section-lede">The animal cards add playful forces that change how the structure behaves.</p>
+					</div>
+					<div class="kt-cards">
+						<figure><img src="/RK-Portfolio/kt/ktcards (1).jpg" alt="Konstruktier challenge card example one" loading="lazy"></figure>
+						<figure><img src="/RK-Portfolio/kt/ktcards (2).jpg" alt="Konstruktier challenge card example two" loading="lazy"></figure>
+						<figure><img src="/RK-Portfolio/kt/ktcards (3).jpg" alt="Konstruktier challenge card example three" loading="lazy"></figure>
+					</div>
+				</section>
+
+				<section class="kt-section kt-feature">
+					<p class="kt-eyebrow">04 / See it in action</p>
+					<h3>Ready to build?</h3>
+					<div class="image-hover">
+						<img id="box" src="/RK-Portfolio/kt/box.png" data-hover-src="/RK-Portfolio/kt/box.gif" alt="Konstruktier wooden box; hover or tap to see it in motion" loading="lazy">
+					</div>
+				</section>
+
+		<div class="lightbox" id="lightbox">
+			<div class="lightbox-content">
+				<button class="lightbox-close" aria-label="Close lightbox">✕</button>
+				<img id="lightbox-img" src="" alt="Preview">
+				<button class="lightbox-nav lightbox-prev" aria-label="Previous image">❮</button>
+				<button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
+			</div>
+		</div>
+
+		</div>
+		<footer class="kt-footer">Konstruktier &mdash; a STEAM toy</footer>
+
+
+		<script>
+        const galleryImages = {
+            midsketches: [
+                '/RK-Portfolio/kt/ktsteam.png',
+                '/RK-Portfolio/kt/ktprinzip.png',
+                '/RK-Portfolio/kt/ktsketch.png',
+            ],
+   
+        };
+
+		document.querySelectorAll('img[data-hover-src]').forEach((image) => {
+			const stillImageSrc = image.src;
+			let isShowingHoverImage = false;
+
+			const showHoverImage = () => {
+				image.src = image.dataset.hoverSrc;
+				isShowingHoverImage = true;
+			};
+			const showStillImage = () => {
+				image.src = stillImageSrc;
+				isShowingHoverImage = false;
+			};
+
+			if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+				image.addEventListener('mouseenter', showHoverImage);
+				image.addEventListener('mouseleave', showStillImage);
+			}
+
+			image.addEventListener('pointerdown', (event) => {
+				if (event.pointerType !== 'touch') return;
+				image.parentElement.classList.add('is-activated');
+				if (isShowingHoverImage) {
+					showStillImage();
+				} else {
+					showHoverImage();
+				}
+			});
+		});
+    </script>
+	<script src="js/gallery.js"></script>
+
+</body>
+
+
+</html>

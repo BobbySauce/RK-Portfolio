@@ -7,6 +7,7 @@
 	<title>Portfolio</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+	<link href="/RK-Portfolio/css/intro.css" rel="stylesheet">
 	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 
@@ -37,43 +38,40 @@
 						<h2> NISSAN MID4 (RE)IMAGINED</h2>
 					</div>
 				</div>
+			</header>
 
-
-				<div class="content-grid" style="--grid-columns: 1fr 2fr; display: grid; gap: 2rem;">
-
-				<div class="text-content1">
-				<p>- Student Project -</p>
-
-			
-				<p>Before the Honda NSX the idea of a Japanese super car already
-					existed. The Nissan MID4 was one of those unrealized visions. Clearly
-					<strong>inspired by European mid-engined sports cars</strong>, the MIDs
-					and especially the MID-II has that dynamic and
-					<strong>organically futurist</strong> look, that really set it apart
-					from other Japanese cars. Sadly the car never made it to production. In
-					this project, I have <strong>reconceptualized</strong> the MID for the
-					modern day.
-				</p>
-				<p>The MID4-II has a truly great side profile.
-					Beltline, shoulder line and the vent line up, creating a dynamic
-					ribbon-like shape that works well inside the A-line. This together with
-					the soft flowing volumes and its subtle dome hood are <strong>
-						essential </strong> to the MID's identity. </p>
+			<section class="intro">
+				<div>
+					<p class="eyebrow">Student project</p>
+					<h3>A Japanese supercar that never made it to production.</h3>
+					<p>Before the Honda NSX the idea of a Japanese super car already
+						existed. The Nissan MID4 was one of those unrealized visions. Clearly
+						<strong>inspired by European mid-engined sports cars</strong>, the MIDs
+						and especially the MID-II has that dynamic and
+						<strong>organically futurist</strong> look, that really set it apart
+						from other Japanese cars. Sadly the car never made it to production. In
+						this project, I have <strong>reconceptualized</strong> the MID for the
+						modern day.
+					</p>
+					<p>The MID4-II has a truly great side profile.
+						Beltline, shoulder line and the vent line up, creating a dynamic
+						ribbon-like shape that works well inside the A-line. This together with
+						the soft flowing volumes and its subtle dome hood are <strong>
+							essential </strong> to the MID's identity.
+					</p>
 				</div>
 
 				<div class="text-content2" style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
-				
-
-				<div class="icons">
-				<img src="/RK-Portfolio/assets/iconalias.png" class="icon-img">
-				<img src="/RK-Portfolio/assets/icongs.png" class="icon-img">
+					<div class="icons">
+						<img src="/RK-Portfolio/assets/iconalias.png" class="icon-img">
+						<img src="/RK-Portfolio/assets/icongs.png" class="icon-img">
+					</div>
+					<div class="spacer"></div>
+					<div class="gallerycontainer" style="width: 65%; max-width: none;">
+						<div class="gallery-grid" id="midsketches"></div>
+					</div>
 				</div>
-			<div class="spacer"></div>
-			<div class="gallerycontainer" style="width: 65%; max-width: none;">
-			<div class="gallery-grid" id="midsketches"> </div> </div>
-			</div>
-
-			</div> 
+			</section>
 
 
 				
@@ -120,10 +118,10 @@
 				<!-- Lightbox modal -->
 				<div class="lightbox" id="lightbox">
 					<div class="lightbox-content">
-						<button class="lightbox-close" onclick="closeLightbox()">✕</button>
+						<button class="lightbox-close" aria-label="Close lightbox">✕</button>
 						<img id="lightbox-img" src="" alt="Preview">
-						<button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">❮</button>
-						<button class="lightbox-nav lightbox-next" onclick="changeImage(1)">❯</button>
+						<button class="lightbox-nav lightbox-prev" aria-label="Previous image">❮</button>
+						<button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
 				</div>
 
 				</div>
@@ -157,63 +155,8 @@
          
         };
 
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        let currentGallery = [];
-        let currentImageIndex = 0;
-
-        Object.entries(galleryImages).forEach(([galleryId, images]) => {
-            const gallery = document.getElementById(galleryId);
-            if (!gallery) return;
-
-            images.forEach((src, index) => {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.addEventListener('click', () => openLightbox(images, index));
-
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = `${galleryId} gallery image ${index + 1}`;
-                img.loading = 'lazy';
-
-                item.appendChild(img);
-                gallery.appendChild(item);
-            });
-        });
-
-        function openLightbox(images, index) {
-            currentGallery = images;
-            currentImageIndex = index;
-            lightboxImg.src = currentGallery[currentImageIndex];
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function changeImage(direction) {
-            currentImageIndex = (currentImageIndex + direction + currentGallery.length) % currentGallery.length;
-            lightboxImg.src = currentGallery[currentImageIndex];
-        }
-
-        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-        document.querySelector('.lightbox-prev').addEventListener('click', () => changeImage(-1));
-        document.querySelector('.lightbox-next').addEventListener('click', () => changeImage(1));
-
-        lightbox.addEventListener('click', (event) => {
-            if (event.target === lightbox) closeLightbox();
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (event.key === 'Escape') closeLightbox();
-            if (event.key === 'ArrowLeft') changeImage(-1);
-            if (event.key === 'ArrowRight') changeImage(1);
-        });
     </script>
+	<script src="js/gallery.js"></script>
 
 </body>
 

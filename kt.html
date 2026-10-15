@@ -4,9 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Portfolio</title>
+	<title>Konstruktier</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+
 	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 
@@ -29,53 +30,54 @@
 			</nav>
 		</div>
 
-		<div class="bordercontainer">
+		
+		
 			<header class="site-header">
 				<div class="header-thumb">
-					<div class="header-text">
-						<h1>KONSTRUKTIER</h1>
-						<h2> A STEAM toy</h2>
+			
+				</div>
+			</header>
+		
+
+			<div class="contentcontainer">
+				<div class="intro-grid">
+					<div>
+						<p class="eyebrow">One-week student project</p>
+						<h3>KONSTRUKTIER</h3>
+						<p> The goal of this project was to create an engaging educational toy. <strong>Konstruktier</strong> introduces children to the principles of structural engineering. </p>
+						<p class="credit">In collaboration with interior architecture students<br><strong>Alexandra Gerbel</strong> &middot; <strong>Lilli Weise</strong></p>
 					</div>
-				</div>
-
-
-				<div class="content-grid" style="--grid-columns: 1fr 2fr; display: grid; gap: 2rem;">
-
-				<div class="text-content1">
-				<p>- Student Project -</p>
-
+					<div class="tool">
+						<img src="/RK-Portfolio/assets/iconblender.png" alt="Blender">
+						<span >3D design and visualization</span>
+					</div>
+					</div>
 			
-				<p>Konstruktier is a wooden toy set for children aged 4 and up that playfully teaches the physics of building.
-				</p>
-				<p>The goal: Construct a stable building using a limited set of parts. Learn to tame the forces that act on structures. Counterbalance and use load-bearing walls to solve challenging tasks, or feel free to make your own architectural dreams become reality.
-				</div>
-
-				<div class="text-content2" style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
-				
-
-				<div class="icons">
-				<img src="/RK-Portfolio/assets/iconblender.png" class="icon-img">
-
-				
-				</div>
-			<div class="spacer"></div>
-			<div class="gallerycontainer" style="width: 65%; max-width: none;">
-			<div class="gallery-grid" id="midsketches"> </div> </div>
 			</div>
-			</div> 
 
-						<div class="center-line"></div>
-
-		
-		
 			
+			<div class="center-line"></div>
+
+			<div class="contentcontainer">
+			<p class="eyebrow">Process</p>
+			<h3> APPROACH</h3>
+			<div class="gallery-grid" id="steam"></div>
+		
+			</div>
+
 
 		<div class="image-hover">
 			<img id="box" src="/RK-Portfolio/kt/box.png" data-hover-src="/RK-Portfolio/kt/box.gif" width="500" alt="Konstruktier box">
 		</div>
        
-        
-
+		<div class="lightbox" id="lightbox">
+			<div class="lightbox-content">
+				<button class="lightbox-close" aria-label="Close lightbox">✕</button>
+				<img id="lightbox-img" src="" alt="Preview">
+				<button class="lightbox-nav lightbox-prev" aria-label="Previous image">❮</button>
+				<button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
+			</div>
+		</div>
 
 				
 				<hr class="center-line"> 
@@ -101,107 +103,22 @@
 
 
 
-		<script>
-			// Swap images on hover for mouse users and toggle them on touch.
-			document.querySelectorAll('img[data-hover-src]').forEach((image) => {
-				const stillImageSrc = image.src;
-				let isShowingHoverImage = false;
-
-				const showHoverImage = () => {
-					image.src = image.dataset.hoverSrc;
-					isShowingHoverImage = true;
-				};
-				const showStillImage = () => {
-					image.src = stillImageSrc;
-					isShowingHoverImage = false;
-				};
-
-				if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-					image.addEventListener('mouseenter', showHoverImage);
-					image.addEventListener('mouseleave', showStillImage);
-				}
-
-				image.addEventListener('pointerdown', (event) => {
-					if (event.pointerType !== 'touch') return;
-					image.parentElement.classList.add('is-activated');
-					if (isShowingHoverImage) {
-						showStillImage();
-					} else {
-						showHoverImage();
-					}
-				});
-			});
-		</script>
+	
 
 
 		<script>
         const galleryImages = {
-            midsketches: [
-                '/RK-Portfolio/mid/midsketches1.png',
-                '/RK-Portfolio/mid/midsketches2.png',
-                '/RK-Portfolio/mid/midsketches3.png',
+            steam: [
+                '/RK-Portfolio/kt/ktsteam.png',
+                '/RK-Portfolio/kt/ktprinzip.png',
+                '/RK-Portfolio/kt/ktsketch.png',
             ],
    
         };
 
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-
-        let currentGallery = [];
-        let currentImageIndex = 0;
-
-        Object.entries(galleryImages).forEach(([galleryId, images]) => {
-            const gallery = document.getElementById(galleryId);
-            if (!gallery) return;
-
-            images.forEach((src, index) => {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.addEventListener('click', () => openLightbox(images, index));
-
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = `${galleryId} gallery image ${index + 1}`;
-                img.loading = 'lazy';
-
-                item.appendChild(img);
-                gallery.appendChild(item);
-            });
-        });
-
-        function openLightbox(images, index) {
-            currentGallery = images;
-            currentImageIndex = index;
-            lightboxImg.src = currentGallery[currentImageIndex];
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function changeImage(direction) {
-            currentImageIndex = (currentImageIndex + direction + currentGallery.length) % currentGallery.length;
-            lightboxImg.src = currentGallery[currentImageIndex];
-        }
-
-        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-        document.querySelector('.lightbox-prev').addEventListener('click', () => changeImage(-1));
-        document.querySelector('.lightbox-next').addEventListener('click', () => changeImage(1));
-
-        lightbox.addEventListener('click', (event) => {
-            if (event.target === lightbox) closeLightbox();
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (event.key === 'Escape') closeLightbox();
-            if (event.key === 'ArrowLeft') changeImage(-1);
-            if (event.key === 'ArrowRight') changeImage(1);
-        });
+       
     </script>
+	<script src="js/gallery.js"></script>
 
 </body>
 

@@ -1,16 +1,21 @@
+/* Design tokens */
 :root {
     --max-width: 1500px;
+    
 }
 
 :root {
     /*--bgwhite: #f0f0f0;*/
-    --bgwhite: #FFFFFF;
+    --bgwhite: #f5f3ef;
     /*--black: #1a1a1a;*/
     --black: #222222;
-    --primary: #3b82f6;
-    --accent: rgb(34, 197, 94);
+	--ink: #222;
+	--muted: #686868;
+	--line: #d8d5cf;
+	
 }
 
+/* Base page styles and typography */
 html,
 body {
     height: 100%;
@@ -24,6 +29,35 @@ body {
     color: var(--black);
 }
 
+h3 {
+    font-size: 2rem;
+    font-weight: 600;
+   
+    margin-bottom: 1rem;
+}
+
+.eyebrow {
+			color: var(--muted);
+			font-size: 0.75rem;
+			font-weight: 600;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+            margin-top:2rem;
+		}
+
+.credit {
+			padding-top: 1rem;
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+			font-size: 0.9rem;
+			line-height: 1.8;
+		}
+
+.credit strong {
+			color: var(--ink);
+			font-weight: 600;}
+
+/* Page containers and grids */
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -38,58 +72,20 @@ body {
     overflow: visible;
 }
 
-.bordercontainer {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    margin-bottom: 2rem;
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
+.contentcontainer {
+margin: 0 auto 3rem;
+padding: 0 clamp(1.25rem, 5vw, 4.5rem);
+max-width: 80%;
 }
 
-header.site-header {
-    text-align: left;
-    position: relative;
-    color: var(--black);
-}
-
-header.site-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-left: +1.25rem !important;
-    margin-right: +1.25rem;
-    color: var(--black);
-}
-
-header.site-header h2 {
-    margin: 0;
-    font-size: 1;
-    font-weight: 100;
-    margin-bottom: 2rem;
-    margin-left: +1.25rem !important;
-    margin-right: +1.25rem
-}
-
-.center-line {
-    width: 50%;
-    /* or any width you want */
-    margin: 35px auto;
-    border: 0;
-    border-top: 1px solid var(--black);
-    height: 0;
-    line-height: 0;
-}
-
-.spacer {
-     width: 50%;
-    /* or any width you want */
-    margin: 35px auto;
-    border: 0;
-  
-    height: 0;
-    line-height: 0;
-}
+.intro-grid {
+			display: grid;
+			grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.65fr);
+			gap: clamp(2rem, 7vw, 7rem);
+			align-items: end;
+			
+        
+		}
 
 .content-grid {
     grid-template-columns: var(--grid-columns);
@@ -102,12 +98,7 @@ header.site-header h2 {
     overflow-wrap: anywhere;
 }
 
-model-viewer {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-}
-
+/* Navigation and page header */
 .info-bar {
     background-color: var(--black);
     color: var(--bgwhite);
@@ -129,7 +120,6 @@ model-viewer {
     opacity: 0.1;
 }
 
-/* Header thumbnail */
 .header-thumb {
     aspect-ratio: 3 / 1;
 
@@ -139,12 +129,42 @@ model-viewer {
     align-content: center;
   
 
-    margin-left: -1.25rem !important;
-    margin-right: -1.25rem !important;
+   
 }
 
+/* Separators and embedded models */
+.center-line {
+    width: 50%;
+    /* or any width you want */
+    margin: 35px auto;
+    border: 0;
+    border-top: 1px solid var(--black);
+    height: 0;
+    line-height: 0;
+}
 
-/* Center the sketch image and keep it responsive */
+model-viewer {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Project tool and media sizing */
+.tool {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 1.25rem 0;
+			border-top: 1px solid var(--kt-line);
+			border-bottom: 1px solid var(--kt-line);
+		}
+
+.tool img {
+			width: 48px;
+			height: 48px;
+			object-fit: contain;
+		}
+
 .fullscreen-img {
     display: block;
     margin-left: -1.25rem !important;
@@ -161,6 +181,34 @@ model-viewer {
    margin-right: 0.5em;
 }
 
+/* Gallery layout and thumbnail presentation */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1em;
+    margin-bottom: 3rem;
+}
+
+.gallery-item {
+    aspect-ratio: 1 / 1;
+    max-width: 400px;
+    overflow: hidden;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #f0f0f0;
+    position: relative;
+
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Interactive image hover/tap effects */
 .image-hover {
     position: relative;
     width: min(500px, 100%);
@@ -229,48 +277,12 @@ model-viewer {
     opacity: 1;
 }
 
-/* Image gallery grid and modal preview */
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1em;
-    margin-bottom: 3rem;
-}
-
-.gallery-item {
-    aspect-ratio: 1 / 1;
-    max-width: 400px;
-    overflow: hidden;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #f0f0f0;
-    position: relative;
-
-}
-
-
-h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-
 .gallery-item:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Lightbox styles */
+/* Lightbox controls and preview */
 .lightbox {
     display: none;
     position: fixed;
@@ -373,10 +385,13 @@ h3 {
     right: -70px;
 }
 
-
+/* Mobile layout adjustments */
 @media (max-width: 768px) {
     .content-grid {
+        grid-template-columns: 1fr;}
+    .intro-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .gallery-grid {
