@@ -7,6 +7,7 @@
 	<title>Konstruktier</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+	
 
 	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
@@ -39,13 +40,19 @@
 			</header>
 		
 
-			<div class="contentcontainer">
+			<div class="content-container">
 				<div class="intro-grid">
 					<div>
 						<p class="eyebrow">One-week student project</p>
-						<h3>KONSTRUKTIER</h3>
-						<p> The goal of this project was to create an engaging educational toy. <strong>Konstruktier</strong> introduces children to the principles of structural engineering. </p>
+						<h2>KONSTRUKTIER</h2>
+					
+						<div>
+						<p> The goal of this project was to create an engaging educational toy made from wood. <strong>Konstruktier</strong> introduces children to the principles of structural engineering. </p>
+						<div class="spacer" style="margin: calc(var(--spacer) * 3) auto;"></div>
+						</div>
+
 						<p class="credit">In collaboration with interior architecture students<br><strong>Alexandra Gerbel</strong> &middot; <strong>Lilli Weise</strong></p>
+						
 					</div>
 					<div class="tool">
 						<img src="/RK-Portfolio/assets/iconblender.png" alt="Blender">
@@ -56,20 +63,85 @@
 			</div>
 
 			
+			
+
+			<div class="content-container">
 			<div class="center-line"></div>
 
-			<div class="contentcontainer">
+
 			<p class="eyebrow">Process</p>
 			<h3> APPROACH</h3>
 			<div class="gallery-grid" id="steam"></div>
 		
+			</div> <!-- end of content -->
+
+			
+
+			<div class="content-container">
+			<div class="center-line"></div>
+			<p class="eyebrow">The game</p>
+			
+			
+			<div class="content-grid" style="--columns: 1fr 2fr;">
+				
+				<div><div class="gallery-grid" id="modell"></div>
+				<p class="credit">Prototype</p></div>
+				<div>
+					<h3>How it works.</h3>
+					<p>Konstruktier is a wooden construction game for children aged four and up that playfully introduces them to 
+                    the world of building physics. The goal is to use a limited set of components to create a portable structure
+                    while learning what load-bearing walls are and how forces are distributed within a building.</p>
+			
+			
+                    <p> To ensure that each game is different, there are challenge cards: they show sequences of colors that 
+                    determine the order of the floors. Between the levels, animals appear and complicate the construction process. 
+                    The giraffe is enormous - it requires two stories at once. The monkey clings to the facade and makes your building wobble. 
+                    And the bear? It pushes upwards, forcing the floor above it into a slant.</p>					
+					<p>As they build, they explore how walls support a structure and how forces move through it. Each new arrangement becomes a chance to test an idea, solve a challenge, and see what makes a design work.</p>
+				</div>
 			</div>
 
+		
 
-		<div class="image-hover">
-			<img id="box" src="/RK-Portfolio/kt/box.png" data-hover-src="/RK-Portfolio/kt/box.gif" width="500" alt="Konstruktier box">
+			<div class="spacer"></div>
+	
+			<div class="center-align" style="--center-margin:20%">
+				<img src="/RK-Portfolio/kt/ktcards (1).jpg" class="center-img" style="border-radius:6%;">
+				<img src="/RK-Portfolio/kt/ktcards (2).jpg" class="center-img" style="border-radius:6%">
+				<img src="/RK-Portfolio/kt/ktcards (3).jpg" class="center-img" style="border-radius:6%">
+			</div>
+
+			
+			</div> <!-- end of content -->
+			
+		<div class="content-container" > 
+		<div class="center-line"></div>
+
+		<div class= center-align style="--center-margin:5%; background: var(--line); border-radius: 20px;"> 
+		
+		<div class="hover-image image-hover">
+			<img id="box" src="/RK-Portfolio/kt/box.png" data-hover-src="/RK-Portfolio/kt/box.gif">
+			
+		
 		</div>
-       
+		</div>
+		
+		</div> <!-- end of content -->
+
+		
+
+				
+		
+
+
+
+
+
+
+		<div class="info-bar"> </div>
+		</div> <!--end of container-->
+
+
 		<div class="lightbox" id="lightbox">
 			<div class="lightbox-content">
 				<button class="lightbox-close" aria-label="Close lightbox">✕</button>
@@ -78,29 +150,6 @@
 				<button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
 			</div>
 		</div>
-
-				
-				<hr class="center-line"> 
-
-
-
-
-
-
-			
-			
-			
-
-
-
-
-
-
-		</div>
-		<div class="info-bar"> </div>
-
-
-
 
 
 	
@@ -113,7 +162,9 @@
                 '/RK-Portfolio/kt/ktprinzip.png',
                 '/RK-Portfolio/kt/ktsketch.png',
             ],
-   
+			modell: [
+				'/RK-Portfolio/kt/ktmodell.jpeg',
+			],
         };
 
        

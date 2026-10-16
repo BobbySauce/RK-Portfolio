@@ -1,7 +1,7 @@
 /* Design tokens */
 :root {
     --max-width: 1500px;
-    
+    --spacer: 35px
 }
 
 :root {
@@ -26,14 +26,27 @@ body {
 body {
     font-family: 'Inter', Arial, sans-serif;
     background: var(--bgwhite);
-    color: var(--black);
+    color: var(--ink);
+}
+
+h2 {
+    color: var(--ink);
+    margin-bottom: 1rem;
+    
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.060em;
+    line-height: 0.88;
 }
 
 h3 {
+    color: var(--ink);
+    margin-bottom: 1rem;
+    
     font-size: 2rem;
     font-weight: 600;
-   
-    margin-bottom: 1rem;
+    letter-spacing: -0.060em;
+    line-height: 0.88;
 }
 
 .eyebrow {
@@ -57,22 +70,46 @@ h3 {
 			color: var(--ink);
 			font-weight: 600;}
 
+
+
+
+/* Separators*/
+.center-line {
+    width: 100%;
+    /* or any width you want */
+    margin: var(--spacer) auto;
+    border: 0;
+    border-top: 2px solid var(--line);
+    height: 0;
+    line-height: 0;
+}
+.spacer {
+    width: 100%;
+    /* or any width you want */
+    margin: var(--spacer) auto;
+    
+    border-top: 1px solid var(--white);
+    height: 0;
+    line-height: 0;
+}
+
+
 /* Page containers and grids */
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
     background: var(--bgwhite);
-    border: 1px solid var(--black);
+    border: 1px solid var(--ink);
     overflow: visible;
 }
 
-.gallerycontainer {
+.gallery-container {
 
     /*border: 1px solid var(--black);*/
     overflow: visible;
 }
 
-.contentcontainer {
+.content-container {
 margin: 0 auto 3rem;
 padding: 0 clamp(1.25rem, 5vw, 4.5rem);
 max-width: 80%;
@@ -88,19 +125,41 @@ max-width: 80%;
 		}
 
 .content-grid {
-    grid-template-columns: var(--grid-columns);
-    grid-template-rows: var(--grid-rows);
-   /*border: 2px solid var(--black);*/
+   display: grid;
+   grid-template-columns: var(--columns, minmax(0, 0.9fr) minmax(0, 1.1fr));
+   
+   gap: clamp(2rem, 7vw, 7rem);
+   align-items: center;
 }
 
-.content-grid > * {
-    min-width: 0;
-    overflow-wrap: anywhere;
+.center-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-left: var(--center-margin);
+    margin-right: var(--center-margin);
+   
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 1em;
+   
 }
+
+.center-img {
+    max-height: 200px;
+    overflow: hidden;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #f0f0f0;
+    position: relative;
+  
+}
+
 
 /* Navigation and page header */
 .info-bar {
-    background-color: var(--black);
+    background-color: var(--ink);
     color: var(--bgwhite);
     padding: 10px 20px;
     display: flex;
@@ -132,16 +191,6 @@ max-width: 80%;
    
 }
 
-/* Separators and embedded models */
-.center-line {
-    width: 50%;
-    /* or any width you want */
-    margin: 35px auto;
-    border: 0;
-    border-top: 1px solid var(--black);
-    height: 0;
-    line-height: 0;
-}
 
 model-viewer {
     display: block;
@@ -192,8 +241,9 @@ model-viewer {
 .gallery-item {
     aspect-ratio: 1 / 1;
     max-width: 400px;
+  
     overflow: hidden;
-    border-radius: 3px;
+    border-radius: 2%;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: #f0f0f0;
@@ -211,14 +261,33 @@ model-viewer {
 /* Interactive image hover/tap effects */
 .image-hover {
     position: relative;
-    width: min(500px, 100%);
+    
+   
+    
 }
 
-.image-hover img {
+.hover-image {
+    position: relative;
+    width: min(800px, 100%);
+}
+
+.hover-image img {
     display: block;
     width: 100%;
     height: auto;
 }
+
+.hover-image .hover-image-alternate {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.hover-image:hover .hover-image-alternate {
+    opacity: 1;
+}
+
 
 .image-hover::after {
     position: absolute;
@@ -255,27 +324,6 @@ model-viewer {
     }
 }
 
-.hover-image {
-    position: relative;
-    width: min(200px, 100%);
-}
-
-.hover-image img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.hover-image .hover-image-alternate {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
-
-.hover-image:hover .hover-image-alternate {
-    opacity: 1;
-}
 
 .gallery-item:hover {
     transform: scale(1.05);
@@ -387,6 +435,25 @@ model-viewer {
 
 /* Mobile layout adjustments */
 @media (max-width: 768px) {
+    .home-hero {
+        min-height: 27rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        gap: 2.5rem;
+        padding: 2rem;
+    }
+
+    .home-hero::before {
+        top: 26%;
+        right: -5rem;
+        width: 17rem;
+    }
+
+    .home-hero h1 {
+        font-size: clamp(4rem, 16vw, 6rem);
+    }
+
     .content-grid {
         grid-template-columns: 1fr;}
     .intro-grid {

@@ -84,20 +84,21 @@ document.addEventListener('keydown', (event) => {
 	if (event.key === 'ArrowRight') changeImage(1);
 });
 
- Object.entries(galleryImages).forEach(([galleryId, images]) => {
-            const gallery = document.getElementById(galleryId);
-            if (!gallery) return;
+Object.entries(galleryImages).forEach(([galleryId, images]) => {
+	document.querySelectorAll('.gallery-grid').forEach((gallery) => {
+		if (gallery.id !== galleryId) return;
 
-            images.forEach((src, index) => {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
+		images.forEach((src, index) => {
+			const item = document.createElement('div');
+			item.className = 'gallery-item';
 
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = `${galleryId} gallery image ${index + 1}`;
-                img.loading = 'lazy';
+			const img = document.createElement('img');
+			img.src = src;
+			img.alt = `${galleryId} gallery image ${index + 1}`;
+			img.loading = 'lazy';
 
-                item.appendChild(img);
-                gallery.appendChild(item);
-            });
-        });
+			item.appendChild(img);
+			gallery.appendChild(item);
+		});
+	});
+});
