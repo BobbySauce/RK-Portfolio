@@ -16,11 +16,68 @@
 }
 
 /* Base page styles and typography */
+
+
 html,
 body {
     height: 100%;
     margin: 0;
+}
+
+html {
     overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.page-scrollbar {
+    position: fixed;
+    z-index: 2000;
+    inset-block: 4px;
+    inset-inline-end: 2px;
+    width: 12px;
+    touch-action: none;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+}
+
+.page-scrollbar:hover,
+.page-scrollbar:focus-visible,
+.page-scrollbar.is-dragging {
+    opacity: 1;
+}
+
+.page-scrollbar.is-hidden {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.page-scrollbar-thumb {
+    position: absolute;
+    inset-inline: 3px;
+    top: 0;
+    min-height: 28px;
+    border-radius: 999px;
+    background: var(--muted);
+    cursor: grab;
+}
+
+.page-scrollbar.is-dragging .page-scrollbar-thumb {
+    cursor: grabbing;
+}
+
+.page-scrollbar:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+}
+
+.lightbox.active ~ .page-scrollbar {
+    pointer-events: none;
+    opacity: 0;
 }
 
 body {
@@ -235,7 +292,7 @@ model-viewer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1em;
-    margin-bottom: 3rem;
+   
 }
 
 .gallery-item {

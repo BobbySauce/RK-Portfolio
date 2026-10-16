@@ -4,161 +4,117 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Portfolio</title>
+	<title>Nissan MID4 — Reimagined</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
-	<link href="/RK-Portfolio/css/intro.css" rel="stylesheet">
+	<script defer src="/RK-Portfolio/js/scrollbar.js"></script>
 	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+	<style>
+		.header-thumb {
+			background-image: url('/RK-Portfolio/mid/midthumb2.png');
+		}
+	</style>
 </head>
 
-<style>
-	.header-thumb {
-		background-image: url('/RK-Portfolio/mid/midthumb2.png');
-	}
-</style>
-
-
 <body>
-
 	<div class="container">
 		<div class="info-bar">
-			<span><a href="/RK-Portfolio/index.html"> <- back</a></span>
-			<nav>
-				<a href="/RK-Portfolio/sketches">sketches</a>
+			<span><a href="/RK-Portfolio/index.html">&larr; back</a></span>
+		<nav>
+				<a href="/RK-Portfolio/one-offs/">one-offs</a>
 				<a>|</a>
 				<a href="/RK-Portfolio/about">about</a>
 			</nav>
 		</div>
 
-		<div class="bordercontainer">
-			<header class="site-header">
-				<div class="header-thumb">
-					<div class="header-text">
-						<h1>MID 4 TYPE H</h1>
-						<h2> NISSAN MID4 (RE)IMAGINED</h2>
-					</div>
-				</div>
-			</header>
+		<header class="site-header">
+			<div class="header-thumb" role="img" aria-label="Nissan MID4 concept car"></div>
+		</header>
 
-			<section class="intro">
+		<main>
+			<section class="content-container intro-grid" aria-labelledby="project-title">
 				<div>
 					<p class="eyebrow">Student project</p>
-					<h3>A Japanese supercar that never made it to production.</h3>
-					<p>Before the Honda NSX the idea of a Japanese super car already
-						existed. The Nissan MID4 was one of those unrealized visions. Clearly
-						<strong>inspired by European mid-engined sports cars</strong>, the MIDs
-						and especially the MID-II has that dynamic and
-						<strong>organically futurist</strong> look, that really set it apart
-						from other Japanese cars. Sadly the car never made it to production. In
-						this project, I have <strong>reconceptualized</strong> the MID for the
-						modern day.
-					</p>
-					<p>The MID4-II has a truly great side profile.
-						Beltline, shoulder line and the vent line up, creating a dynamic
-						ribbon-like shape that works well inside the A-line. This together with
-						the soft flowing volumes and its subtle dome hood are <strong>
-							essential </strong> to the MID's identity.
-					</p>
+					<h2 id="project-title">Nissan MID4<br>reimagined.</h2>
+					<p>A Japanese supercar that never made it to production. Before the Honda NSX, the idea of a Japanese supercar already existed. The Nissan MID4 was one of those unrealized visions, clearly inspired by European mid-engined sports cars. The MID-II's dynamic, organically futuristic design set it apart from other Japanese cars. This project reimagines the MID for the modern day.</p>
+					<p>The MID4-II has a distinctive side profile. Its beltline, shoulder line and vent line up to create a dynamic, ribbon-like shape within the A-line. Together with its soft volumes and subtle dome hood, these details are essential to the MID's identity.</p>
+					<p class="credit">Design tools<br><strong>Autodesk Alias</strong> &middot; <strong>Gravity Sketch</strong></p>
 				</div>
-
-				<div class="text-content2" style="display: flex; flex-direction: column; align-items: flex-end; text-align: right;">
-					<div class="icons">
-						<img src="/RK-Portfolio/assets/iconalias.png" class="icon-img">
-						<img src="/RK-Portfolio/assets/icongs.png" class="icon-img">
-					</div>
-					<div class="spacer"></div>
-					<div class="gallerycontainer" style="width: 65%; max-width: none;">
-						<div class="gallery-grid" id="midsketches"></div>
+				<div>
+					<div class="tool">
+						<img src="/RK-Portfolio/assets/iconalias.png" alt="">
+						<span>Surfacing</span>
+				
+						<img src="/RK-Portfolio/assets/icongs.png" alt="">
+						<span>3D sketching in VR</span>
 					</div>
 				</div>
 			</section>
 
-
-				
-				<hr class="center-line"> 
-
-
-
-
-
-
-			
-			
-			
+			<section class="content-container" aria-labelledby="exploration-title">
 				<hr class="center-line">
+				<p class="eyebrow">01 / Design exploration</p>
+				<h3 id="exploration-title">Finding the shape</h3>
+				<div class="gallery-grid" id="midsketches" aria-label="MID4 design sketches"></div>
+			</section>
 
-				
-			
-
-				<div class="content-grid" style="--grid-columns: 1fr 3fr; display: grid; gap: 2rem; align-items: center;">
-				
-				<div class="text-content1">
-				<p>- 3D-SKETCH IN VR -</p>
-
-				<p> <strong> Gravity Sketch </strong> is a great way to bring my sketches into 3D space,
-					while working with the real scale and proportions in VR. Because
-					working with SUB-D is quite fast, I am still able to iterate and explore.
-					In this case, especially the back end has gone through some changes.
-					The model was then directly brought to Alias as a reference for more refined surfacing.</p>
-					</div>
-					<div class="gallery" style="align-items: center; display: flex; justify-content: center;">
-
-					<model-viewer src="/RK-Portfolio/mid/midgs.glb" camera-orbit="-150deg 85deg 1m" alt="3D model"
-					auto-rotate camera-controls style="width: 100%;  height: 300px; display: block;">
-					
-				</model-viewer>
-					</div>
-				</div>
-
-
+			<section class="content-container" aria-labelledby="vr-title">
 				<hr class="center-line">
-
-				<div class="gallery-grid" id="midalias"> </div>
-
-				<!-- Lightbox modal -->
-				<div class="lightbox" id="lightbox">
-					<div class="lightbox-content">
-						<button class="lightbox-close" aria-label="Close lightbox">✕</button>
-						<img id="lightbox-img" src="" alt="Preview">
-						<button class="lightbox-nav lightbox-prev" aria-label="Previous image">❮</button>
-						<button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
+				<p class="eyebrow">02 / 3D exploration</p>
+				<div class="content-grid" style="--columns: minmax(0, 0.8fr) minmax(0, 1.2fr);">
+					<div>
+						<h3 id="vr-title">Sketching at full scale</h3>
+						<p>Gravity Sketch brings the sketches into 3D space, where I can work with real scale and proportions in VR. Subdivision modeling makes it quick to iterate and explore. The rear of the car went through several changes before the model was brought into Alias as a reference for more refined surfacing.</p>
+					</div>
+					<model-viewer
+						src="/RK-Portfolio/mid/midgs.glb"
+						camera-orbit="-150deg 85deg 1m"
+						alt="Interactive 3D model of the Nissan MID4 concept"
+						auto-rotate
+						camera-controls
+						style="height: 360px;">
+					</model-viewer>
 				</div>
+			</section>
 
-				</div>
+			<section class="content-container" aria-labelledby="surfacing-title">
+				<hr class="center-line">
+				<p class="eyebrow">03 / Surface development</p>
+				<h3 id="surfacing-title">Refining the design</h3>
+				<div class="gallery-grid" id="midalias" aria-label="MID4 digital surfacing and design development"></div>
+			</section>
+		</main>
 
+		<div class="info-bar"></div>
+	</div>
 
-
-
-
+	<div class="lightbox" id="lightbox">
+		<div class="lightbox-content">
+			<button class="lightbox-close" aria-label="Close lightbox">✕</button>
+			<img id="lightbox-img" src="" alt="Preview">
+			<button class="lightbox-nav lightbox-prev" aria-label="Previous image">❮</button>
+			<button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
 		</div>
-		<div class="info-bar"> </div>
+	</div>
 
-
-
-
-
-		<script>
-        const galleryImages = {
-            midsketches: [
-                '/RK-Portfolio/mid/midsketches1.png',
-                '/RK-Portfolio/mid/midsketches2.png',
-                '/RK-Portfolio/mid/midsketches3.png',
-            ],
-            midalias: [
-                '/RK-Portfolio/mid/midalias (1).png',
-                '/RK-Portfolio/mid/midalias.png',
-                '/RK-Portfolio/mid/midvar.jpg',
-                '/RK-Portfolio/mid/midvar (1).jpg',
-                '/RK-Portfolio/mid/midvar (2).jpg',
-                '/RK-Portfolio/mid/midgscomp.png',
-            ],
-         
-        };
-
-    </script>
-	<script src="js/gallery.js"></script>
-
+	<script>
+		const galleryImages = {
+			midsketches: [
+				'/RK-Portfolio/mid/midsketches1.png',
+				'/RK-Portfolio/mid/midsketches2.png',
+				'/RK-Portfolio/mid/midsketches3.png',
+			],
+			midalias: [
+				'/RK-Portfolio/mid/midalias (1).png',
+				'/RK-Portfolio/mid/midalias.png',
+				'/RK-Portfolio/mid/midvar.jpg',
+				'/RK-Portfolio/mid/midvar (1).jpg',
+				'/RK-Portfolio/mid/midvar (2).jpg',
+				'/RK-Portfolio/mid/midgscomp.png',
+			],
+		};
+	</script>
+	<script src="/RK-Portfolio/js/gallery.js"></script>
 </body>
-
 
 </html>

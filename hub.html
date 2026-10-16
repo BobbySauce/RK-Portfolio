@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HUB — A personal key to the car</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+	<script defer src="/RK-Portfolio/js/scrollbar.js"></script>
+	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+	<style>
+		.header-thumb {
+			background-image: url('/RK-Portfolio/hub/hubthumb.png');
+		}
+
+	
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="info-bar">
+			<span><a href="/RK-Portfolio/index.html">&larr; back</a></span>
+			<nav>
+				<a href="/RK-Portfolio/one-offs/">one-offs</a>
+				<a>|</a>
+				<a href="/RK-Portfolio/about">about</a>
+			</nav>
+		</div>
+
+		<header class="site-header">
+			<div class="header-thumb" role="img" aria-label="HUB connected-car dashboard concept"></div>
+		</header>
+
+		<main>
+			<section class="content-container intro-grid" aria-labelledby="project-title">
+				<div>
+					<p class="eyebrow">Student Project</p>
+					<h2 id="project-title">HUB<br>Your car, your settings.</h2>
+					<p>Cars are often shared between family members, but each driver has different preferences. HUB explores how a smartphone can work as a personal key, bringing a driver's familiar settings into the car.</p>
+					<p>Personalized seat and mirror positions, interface themes, locations, and media help make each journey feel familiar from the start.</p>
+				</div>
+				<div class="tool">
+						<img src="/RK-Portfolio/assets/iconalias.png" alt="">
+						<span>Digital Surfacing</span>
+				</div>
+			</section>
+
+            <section class="content-container">
+            <hr class="center-line">
+            <p class="eyebrow">01 / Process</p>
+            <h3> PHONES & MOBILE INTERFACES</h3>
+			<div class="gallery-grid" id="hubthink"></div>
+            </section>
+
+
+
+			<section class="content-container">
+				<hr class="center-line">
+				<p class="eyebrow">01 / A personal connection</p>
+				<div class="content-grid" style="--columns: minmax(0, 2fr) minmax(0, 1.2fr);">
+					<div>
+						<h3 id="personal-title">Your phone becomes your key.</h3>
+						<p>For young drivers, a smartphone already plays an important role in the car. HUB builds on that familiar relationship: the phone identifies the driver and helps set up the vehicle for them.</p>
+						<p>Instead of starting from scratch each time, drivers can carry their preferred setup with them—even when the car is shared.</p>
+					</div>
+                    <div class="center-align">  
+                    <div class="gallery-grid" id="hubkey"> </div></div>
+				</div>
+			</section>
+
+			<section class="content-container">
+				<hr class="center-line">
+				<p class="eyebrow">02 / Clear, tactile controls</p>
+				<h3 id="controls-title">Familiar actions, made simple.</h3>
+				<p>Older in-car interfaces offer useful lessons: clear functional separation and tactile feedback make controls easier to use in traffic. HUB brings those principles into a smartphone-connected interface, with distinct directions for navigation, climate, and media.</p>
+				<div class="gallery-grid hub-gallery" aria-label="HUB interface design process">
+					<div class="gallery-item"><img src="/RK-Portfolio/hub/hubsketches.png" alt="Early sketches for the HUB vehicle interface"></div>
+					<div class="gallery-item"><img src="/RK-Portfolio/hub/hub-1.png" alt="HUB directional control system for navigation, climate, and media"></div>
+					<div class="gallery-item"><img src="/RK-Portfolio/hub/hub-3.png" alt="Sketch exploring clear, tactile in-car controls"></div>
+				</div>
+			</section>
+
+			<section class="content-container" aria-labelledby="shared-title">
+				<hr class="center-line">
+				<p class="eyebrow">03 / Designed for shared journeys</p>
+				<div class="content-grid" style="--columns: minmax(0, 1fr) minmax(0, 1fr);">
+					<div>
+						<h3 id="shared-title">One car. Different drivers.</h3>
+						<p>A shared car should adapt to the person behind the wheel. A personal profile can bring together familiar settings and make the handover between family members feel more seamless.</p>
+					</div>
+					<div class="gallery-grid hub-gallery" aria-label="HUB shared-car user scenario">
+						<div class="gallery-item"><img src="/RK-Portfolio/hub/hub-2.png" alt="Storyboards showing a family sharing a car and using personal driver settings"></div>
+					</div>
+				</div>
+			</section>
+
+			<section class="content-container" aria-labelledby="dashboard-title">
+				<hr class="center-line">
+				<p class="eyebrow">04 / The interface in context</p>
+				<h3 id="dashboard-title">A familiar setup, ready to go.</h3>
+				<div class="gallery-grid hub-gallery" aria-label="HUB dashboard design">
+					<div class="gallery-item"><img src="/RK-Portfolio/hub/hub.png" alt="HUB dashboard concept integrating a personal smartphone profile into the car"></div>
+				</div>
+			</section>
+		</main>
+
+		<div class="info-bar"></div>
+	</div>
+
+	<div class="lightbox" id="lightbox">
+		<div class="lightbox-content">
+			<button class="lightbox-close" aria-label="Close lightbox">✕</button>
+			<img id="lightbox-img" src="" alt="Preview">
+			<button class="lightbox-nav lightbox-prev" aria-label="Previous image">❮</button>
+			<button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
+		</div>
+	</div>
+
+	<script>
+		const galleryImages = {
+             hubthink: [
+                '/RK-Portfolio/hub/hub.png',
+                '/RK-Portfolio/hub/hub-1.png',
+                '/RK-Portfolio/hub/hub-2.png',
+
+            ],
+      
+             hubkey: [
+                
+                '/RK-Portfolio/hub/hubsibs.png',
+
+            ]
+        };
+	</script>
+	<script src="/RK-Portfolio/js/gallery.js"></script>
+</body>
+
+</html>

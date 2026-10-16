@@ -4,214 +4,155 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Portfolio</title>
+	<title>CLIPBOARD — Signature tablet</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 	<link href="/RK-Portfolio/css/style.css" rel="stylesheet">
+	<script defer src="/RK-Portfolio/js/scrollbar.js"></script>
 	<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+	<style>
+		.header-thumb {
+			background-image: url('/RK-Portfolio/clip/clipbanner.png');
+		}
 
+		.clip-tool-list {
+			align-self: center;
+		}
+
+		.clip-gallery .gallery-item {
+			max-width: none;
+			aspect-ratio: auto;
+			background: #ecebea;
+		}
+
+		.clip-gallery .gallery-item img {
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+		}
+
+		.clip-model {
+			min-height: 360px;
+		}
+	</style>
 </head>
- 
-<style>
-	.header-thumb {
-		background-image: url('/RK-Portfolio/clip/clipbanner.png');
-	}
-</style>
 
 <body>
 	<div class="container">
 		<div class="info-bar">
-			<span><a href="/RK-Portfolio/index.html"><- back</a></span>
-			<nav>
-				<a href="/sketches">sketches</a>
-				<a>|</a>
-				<a href="/about">about</a>
+			<span><a href="/RK-Portfolio/index.html">&larr; back</a></span>
+			<nav aria-label="Main navigation">
+				<a href="/RK-Portfolio/one-offs/">one-offs</a>
+				<span aria-hidden="true">|</span>
+				<a href="/RK-Portfolio/about/">about</a>
 			</nav>
 		</div>
 
-		<div class="bordercontainer">
-			<header class="site-header">
-				<div class="header-thumb">
-					<div class="header-text">
-						<h1>CLIPBOARD</h1>
-						<h2>Signature Tablet for Hardware Versatility</h2>
-					</div>
+		<header class="site-header">
+			<div class="header-thumb" role="img" aria-label="CLIPBOARD electronic signature tablet"></div>
+		</header>
 
-
-
-
-				</div>
-				
-				<div class="content-grid" style="--grid-columns: 1fr 2fr; display: grid; gap: 2rem;">
+		<main>
+			<section class="content-container intro-grid" aria-labelledby="project-title">
 				<div>
-				<p> - Student Project in Cooperation with Signotec -</p>
-
-				<p>Signature tablets are important devices for industries that work with
-					legally binding documents. Clients who purchase these tablets need
-					secure and compliant systems for proper authentication. Signotec is one
-					of the well-respected brands that provide software and hardware used for
-					e-signatures. Often working closely with international clients, Signotec
-					tries to find specific solutions for different market requirements.
-					Signature tablets are regularly used in combination with camera
-					verification, payment options, and various other scanners. For those
-					special cases, manufacturing a tablet in a way <strong>in which</strong>
-					various features could be included or left out in the process would
-					reduce costs and product waste. That is the core idea of this project.
-					The idea and also the various hardware parts and screen size are
-					provided by Signotec.</p>
-				<p>Contracts are interesting. They hold a very significant place in our
-					society but are also handled in many ways. Sometimes they are very
-					<strong>impersonal</strong>, dealing only with financial matters;
-					sometimes they are very personal. They may be handled very
-					<strong>secretively</strong> or be passed around a whole room for
-					everyone to see. But one thing remains important: there needs to be a
-					lot of trust between the contractor and the contractee.
-				</p>
-
-				<p>I believe a good way to provide trust is to give someone their own
-					time and space. Oftentimes, the experience of signature tablets is fully
-					controlled by the contractor. They are firmly planted on the table, at
-					an uncomfortable reading angle. The contractee has to read and sign
-					their document in an inflexible position, all the while potentially
-					under the watchful eye of the contractor. Providing more control to
-					balance this relationship is key.</p>
-					</div>
-				<div  style="text-align: right;">
-					<img src="/RK-Portfolio/assets/iconalias.png" class="icon-img">
-					<img src="/RK-Portfolio/assets/icondynamo.png" class="icon-img">
-					<img src="/RK-Portfolio/assets/iconinventor.png" class="icon-img">
-
-					</div></div>
-
-				<hr class="center-line">
-
-				<img src="/RK-Portfolio/clip/clipsketches1.png" class="fullscreen-img">
-				<img src="/RK-Portfolio/clip/clipsketches2.png" class="fullscreen-img">
-
-				<div class="gallery-grid" id="gallery-2">
-					<!-- Gallery items will be injected here by JavaScript -->
+					<p class="eyebrow">Student project · In cooperation with signotec</p>
+					<h2 id="project-title">CLIPBOARD<br>Signature tablet, rethought.</h2>
+					<p>Signature tablets are essential for businesses that handle legally binding documents. They often need to work with cameras, payment systems, and other hardware, but not every customer needs the same setup. Developed with signotec, this project explores a modular tablet that can be configured for different requirements—helping reduce unnecessary components, cost, and product waste.</p>
+					<p>Signing a contract also depends on trust. The person signing should have the time and space to read and respond comfortably, rather than being confined to a fixed, awkward position controlled by the other party.</p>
+					<p class="credit">Project collaboration<br><strong>signotec</strong></p>
 				</div>
+				<div class="clip-tool-list">
+					<div class="tool">
+						<img src="/RK-Portfolio/assets/iconalias.png" alt="Autodesk Alias">
+						<span>Surface design</span>
+					</div>
+					<div class="tool">
+						<img src="/RK-Portfolio/assets/icondynamo.png" alt="Dynamo">
+						<span>Parametric exploration</span>
+					</div>
+					<div class="tool">
+						<img src="/RK-Portfolio/assets/iconinventor.png" alt="Autodesk Inventor">
+						<span>Product development</span>
+					</div>
+				</div>
+			</section>
 
+			<section class="content-container" aria-labelledby="concept-title">
 				<hr class="center-line">
-				
-				<model-viewer src="/RK-Portfolio/clip/clip3d.glb" camera-orbit="-0deg 10deg 1m" alt="3D model"
-					auto-rotate camera-controls style="height: 600px; display: block; margin: 0 auto;">
+				<p class="eyebrow">01 / Concept development</p>
+				<h3 id="concept-title">A tablet shaped around the signing experience</h3>
+				<p>Early sketches explore different forms and ways to hold, position, and use the device. The concept aims to give the signer more control over their space while keeping the tablet adaptable to different hardware configurations.</p>
+				<div class="gallery-grid clip-gallery" id="clip-concepts" aria-label="CLIPBOARD concept sketches"></div>
+			</section>
 
+			<section class="content-container" aria-labelledby="modularity-title">
+				<hr class="center-line">
+				<p class="eyebrow">02 / Modular hardware</p>
+				<div class="content-grid" style="--columns: minmax(0, 0.8fr) minmax(0, 1.2fr);">
+					<div>
+						<h3 id="modularity-title">One platform, different configurations.</h3>
+						<p>The tablet is designed as a base platform that can accommodate optional components. Depending on the use case, features such as camera verification or contactless payment can be included or left out instead of being built into every unit.</p>
+						<p>Parametric exploration helped develop the form and investigate how components could fit within the product.</p>
+					</div>
+					<div class="gallery-grid clip-gallery" id="clip-development" aria-label="CLIPBOARD hardware and development images"></div>
+				</div>
+			</section>
+
+			<section class="content-container" aria-labelledby="final-title">
+				<hr class="center-line">
+				<p class="eyebrow">03 / Final design</p>
+				<h3 id="final-title">A more comfortable way to sign</h3>
+				<p>A considered shape and flexible setup give the signer a more comfortable, independent interaction while supporting the practical needs of the business.</p>
+				<div class="gallery-grid clip-gallery" id="clip-final" aria-label="CLIPBOARD final design and product details"></div>
+			</section>
+
+			<section class="content-container" aria-labelledby="model-title">
+				<hr class="center-line">
+				<p class="eyebrow">04 / 3D model</p>
+				<h3 id="model-title">Explore the form</h3>
+				<model-viewer
+					class="clip-model"
+					src="/RK-Portfolio/clip/clip3d.glb"
+					alt="Interactive 3D model of the CLIPBOARD signature tablet"
+					camera-controls
+					auto-rotate>
 				</model-viewer>
-				<hr class="center-line">
-
-
-				<div class="gallery-grid" id="gallery-1">
-					<!-- Gallery items will be injected here by JavaScript -->
-				</div>
-
-
-
-				<!-- Lightbox modal -->
-				<div class="lightbox" id="lightbox">
-					<div class="lightbox-content">
-						<button class="lightbox-close" onclick="closeLightbox()">✕</button>
-						<img id="lightbox-img" src="" alt="Preview">
-						<button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">❮</button>
-						<button class="lightbox-nav lightbox-next" onclick="changeImage(1)">❯</button>
-					</div>
-				</div>
-
-			</header>
-			<main>
-
-			</main>
-		</div>
+			</section>
+		</main>
 
 		<div class="info-bar"></div>
 	</div>
 
+	<div class="lightbox" id="lightbox">
+		<div class="lightbox-content">
+			<button class="lightbox-close" aria-label="Close lightbox">✕</button>
+			<img id="lightbox-img" src="" alt="Preview">
+			<button class="lightbox-nav lightbox-prev" aria-label="Previous image">❮</button>
+			<button class="lightbox-nav lightbox-next" aria-label="Next image">❯</button>
+		</div>
+	</div>
+
 	<script>
-
-		// Gallery 1 images
-		const images1 = [
-			'/RK-Portfolio/clip/cliprender (2).png',
-			"/RK-Portfolio/clip/cliprender (1).png",
-			"/RK-Portfolio/clip/clipinside (1).png",
-			"/RK-Portfolio/clip/clipinside (2).png",
-			"/RK-Portfolio/clip/clipinside (3).png",
-		];
-
-		// Gallery 2 images - Add your images here
-		const images2 = [
-			'/RK-Portfolio/clip/clipmod1.png',
-			'/RK-Portfolio/clip/clipmod3.png',
-			'/RK-Portfolio/clip/clipmod2.png',
-			'/RK-Portfolio/clip/clipmod4.png',
-
-		];
-
-		let currentImageIndex = 0;
-		let currentGallery = images1;
-		const lightbox = document.getElementById('lightbox');
-		const lightboxImg = document.getElementById('lightbox-img');
-
-		// Create gallery items for both galleries
-		function createGallery(galleryId, imageArray) {
-			const gallery = document.getElementById(galleryId);
-			imageArray.forEach((src, index) => {
-				const item = document.createElement('div');
-				item.className = 'gallery-item';
-				item.onclick = () => openLightbox(index, imageArray);
-
-				const img = document.createElement('img');
-				img.src = src;
-				img.alt = `Gallery image ${index + 1}`;
-				img.loading = 'lazy';
-
-				item.appendChild(img);
-				gallery.appendChild(item);
-			});
-		}
-
-		createGallery('gallery-1', images1);
-		createGallery('gallery-2', images2);
-
-		function openLightbox(index, imageArray) {
-			currentImageIndex = index;
-			currentGallery = imageArray;
-			lightboxImg.src = imageArray[index];
-			lightbox.classList.add('active');
-			document.body.style.overflow = 'hidden';
-		}
-
-		function closeLightbox() {
-			lightbox.classList.remove('active');
-			document.body.style.overflow = 'auto';
-		}
-
-		function changeImage(direction) {
-			currentImageIndex += direction;
-
-			if (currentImageIndex < 0) {
-				currentImageIndex = currentGallery.length - 1;
-			} else if (currentImageIndex >= currentGallery.length) {
-				currentImageIndex = 0;
-			}
-
-			lightboxImg.src = currentGallery[currentImageIndex];
-		}
-
-		// Close lightbox on background click
-		lightbox.addEventListener('click', (e) => {
-			if (e.target === lightbox) {
-				closeLightbox();
-			}
-		});
-
-		// Keyboard navigation
-		document.addEventListener('keydown', (e) => {
-			if (!lightbox.classList.contains('active')) return;
-
-			if (e.key === 'Escape') closeLightbox();
-			if (e.key === 'ArrowLeft') changeImage(-1);
-			if (e.key === 'ArrowRight') changeImage(1);
-		});
+		const galleryImages = {
+			'clip-concepts': [
+				'/RK-Portfolio/clip/clipsketches1.png',
+				'/RK-Portfolio/clip/clipsketches2.png',
+			],
+			'clip-development': [
+				'/RK-Portfolio/clip/clipmod1.png',
+				'/RK-Portfolio/clip/clipmod3.png',
+				'/RK-Portfolio/clip/clipmod2.png',
+				'/RK-Portfolio/clip/clipmod4.png',
+			],
+			'clip-final': [
+				'/RK-Portfolio/clip/cliprender (2).png',
+				'/RK-Portfolio/clip/cliprender (1).png',
+				'/RK-Portfolio/clip/clipinside (1).png',
+				'/RK-Portfolio/clip/clipinside (2).png',
+				'/RK-Portfolio/clip/clipinside (3).png',
+			],
+		};
 	</script>
+	<script src="/RK-Portfolio/js/gallery.js"></script>
 </body>
 
 </html>
