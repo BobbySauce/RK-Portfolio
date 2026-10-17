@@ -5,6 +5,8 @@ const previousButton = document.querySelector('.lightbox-prev');
 const nextButton = document.querySelector('.lightbox-next');
 let currentGalleryItems = [];
 let currentImageIndex = 0;
+let savedScrollY = 0;
+let previousBodyStyles;
 
 
 
@@ -43,13 +45,30 @@ function openLightbox(gallery, index) {
 	currentGalleryItems = Array.from(gallery.querySelectorAll('.gallery-item img'));
 	currentImageIndex = index;
 	lightboxImg.src = currentGalleryItems[currentImageIndex].src;
-	lightbox.classList.add('active');
+	savedScrollY = window.scrollY;
+	previousBodyStyles = {
+		position: document.body.style.position,
+		top: document.body.style.top,
+		width: document.body.style.width,
+		overflow: document.body.style.overflow,
+	};
+	document.body.style.position = 'fixed';
+	document.body.style.top = `-${savedScrollY}px`;
+	document.body.style.width = '100%';
 	document.body.style.overflow = 'hidden';
+	lightbox.classList.add('active');
 }
 
 function closeLightbox() {
 	lightbox.classList.remove('active');
-	document.body.style.overflow = '';
+	if (!previousBodyStyles) return;
+
+	document.body.style.position = previousBodyStyles.position;
+	document.body.style.top = previousBodyStyles.top;
+	document.body.style.width = previousBodyStyles.width;
+	document.body.style.overflow = previousBodyStyles.overflow;
+	previousBodyStyles = undefined;
+	window.scrollTo(0, savedScrollY);
 }
 
 function changeImage(direction) {

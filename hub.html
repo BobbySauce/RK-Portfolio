@@ -44,6 +44,8 @@
 				<div class="tool">
 						<img src="/RK-Portfolio/assets/iconalias.png" alt="">
 						<span>Digital Surfacing</span>
+						<img src="/RK-Portfolio/assets/iconalias.png" alt="">
+						<span>UI Design</span>
 				</div>
 			</section>
 
@@ -65,45 +67,65 @@
 						<p>For young drivers, a smartphone already plays an important role in the car. HUB builds on that familiar relationship: the phone identifies the driver and helps set up the vehicle for them.</p>
 						<p>Instead of starting from scratch each time, drivers can carry their preferred setup with them—even when the car is shared.</p>
 					</div>
-                    <div class="center-align">  
-                    <div class="gallery-grid" id="hubkey"> </div></div>
+                    
+                    <div class="gallery-grid" id="hubkey"> </div>
 				</div>
 			</section>
 
 			<section class="content-container">
 				<hr class="center-line">
-				<p class="eyebrow">02 / Clear, tactile controls</p>
-				<h3 id="controls-title">Familiar actions, made simple.</h3>
-				<p>Older in-car interfaces offer useful lessons: clear functional separation and tactile feedback make controls easier to use in traffic. HUB brings those principles into a smartphone-connected interface, with distinct directions for navigation, climate, and media.</p>
-				<div class="gallery-grid hub-gallery" aria-label="HUB interface design process">
-					<div class="gallery-item"><img src="/RK-Portfolio/hub/hubsketches.png" alt="Early sketches for the HUB vehicle interface"></div>
-					<div class="gallery-item"><img src="/RK-Portfolio/hub/hub-1.png" alt="HUB directional control system for navigation, climate, and media"></div>
-					<div class="gallery-item"><img src="/RK-Portfolio/hub/hub-3.png" alt="Sketch exploring clear, tactile in-car controls"></div>
-				</div>
+				<p class="eyebrow">02 / Shape exploration</p>
+				<h3>Designed for budget-conscious new drivers.</h3>
+				<p>These sketches explore a clear, approachable interface for young and first-time drivers—keeping the design focused on the essentials to make a personal driving experience feel accessible.</p>
+				<img class="fullscreen-img" src="/RK-Portfolio/hub/hubsketches.png" alt="Early HUB interface sketches exploring an accessible design for new drivers">
+		
+				
+				<img class="fullscreen-img" src="/RK-Portfolio/hub/hubrender.png" alt="Initial HUB concept render showing the interface inside a car">
 			</section>
 
-			<section class="content-container" aria-labelledby="shared-title">
+			<section class="content-container">
 				<hr class="center-line">
-				<p class="eyebrow">03 / Designed for shared journeys</p>
-				<div class="content-grid" style="--columns: minmax(0, 1fr) minmax(0, 1fr);">
+				<p class="eyebrow">04 / Personal driver settings</p>
+				<h3>A setup that feels like yours.</h3>
+				<p>Drivers can choose the settings that make each journey feel familiar, from their preferred driving setup to the details of their in-car experience.</p>
+				<div class="content-grid" style="--columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; align-items: start;">
 					<div>
-						<h3 id="shared-title">One car. Different drivers.</h3>
-						<p>A shared car should adapt to the person behind the wheel. A personal profile can bring together familiar settings and make the handover between family members feel more seamless.</p>
+						<p class="eyebrow">Personal profile</p>
+						<div class="gallery-grid" id="hub-driver-profile" aria-label="HUB personal driver profile">
+							<div class="gallery-item"><img src="/RK-Portfolio/hub/hubrendersettings.png" alt="HUB render showing personal driver settings"></div>
+						</div>
 					</div>
-					<div class="gallery-grid hub-gallery" aria-label="HUB shared-car user scenario">
-						<div class="gallery-item"><img src="/RK-Portfolio/hub/hub-2.png" alt="Storyboards showing a family sharing a car and using personal driver settings"></div>
+					<div>
+						<p class="eyebrow">Driving preferences</p>
+						<div class="gallery-grid" id="hub-driving-preferences" aria-label="HUB personalized driving settings">
+							<div class="gallery-item"><img src="/RK-Portfolio/hub/hubrendersettingsdrive.png" alt="HUB render showing personalized driving settings"></div>
+						</div>
+					</div>
+					<div>
+						<p class="eyebrow">Passenger choices</p>
+						<div class="gallery-grid" id="hub-passenger-choices" aria-label="HUB passenger choices">
+							<div class="gallery-item"><img src="/RK-Portfolio/hub/hubrenderpassenger.png" alt="HUB passenger interface showing passengers making choices for the journey"></div>
+						</div>
+						<p class="credit">Passengers can make choices too, so everyone in the car can help shape the journey.</p>
 					</div>
 				</div>
 			</section>
 
-			<section class="content-container" aria-labelledby="dashboard-title">
+			<section class="content-container">
 				<hr class="center-line">
-				<p class="eyebrow">04 / The interface in context</p>
-				<h3 id="dashboard-title">A familiar setup, ready to go.</h3>
-				<div class="gallery-grid hub-gallery" aria-label="HUB dashboard design">
-					<div class="gallery-item"><img src="/RK-Portfolio/hub/hub.png" alt="HUB dashboard concept integrating a personal smartphone profile into the car"></div>
+				<p class="eyebrow">05 / The interface in context</p>
+				<h3>Clear directions. Less distraction.</h3>
+				<p>The interface uses clear directional choices to make key actions easier to understand at a glance. Its focused layout and simple motion are designed around the needs of driving, helping keep interactions direct and attention on the road.</p>
+				<div class="content-grid" style="--columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; background: var(--line); border-radius: 20px; padding: 1.5rem; box-sizing: border-box;">
+					<img src="/RK-Portfolio/hub/hubdirections.png" alt="HUB interface showing clear directional choices for in-car controls" style="display: block; width: 100%; height: auto;">
+					<video controls muted loop playsinline aria-label="Animation demonstrating the HUB in-car user interface" style="display: block; width: 100%; height: auto;">
+						<source src="/RK-Portfolio/hub/hubAnimation.mp4" type="video/mp4">
+						Your browser does not support the video element.
+					</video>
 				</div>
 			</section>
+
+	
 		</main>
 
 		<div class="info-bar"></div>
@@ -135,6 +157,7 @@
         };
 	</script>
 	<script src="/RK-Portfolio/js/gallery.js"></script>
+	<script src="/RK-Portfolio/js/gallery-layout.js"></script>
 </body>
 
 </html>
